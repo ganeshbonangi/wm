@@ -1,0 +1,137 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <h1>Client requirement</h1>
+<form action="" ng-show="!placedSuccess">
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Number of employees:</label>
+    </div>
+    <div class="col-xs-12">
+        <input type="number" class="form-control" ng-model="order.empCount" placeholder="employee count"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Type of employement:</label>
+    </div>
+    <div class="col-xs-12">
+       <select class="form-control" ng-model="order.typeOfWork"> 
+          <option value="fullTime" >fullTime</option>
+          <option value="partTime" >partTime</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Type of shift:</label>
+    </div>
+    <!-- <div class="col-xs-12">
+        <select class="form-control" ng-model="order.typeOfShift"> 
+          <option value="dayShift">dayShift</option>
+          <option value="nightShift">nightShift</option>
+        </select>
+    </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Days to work:</label>
+    </div>
+    <div class="col-xs-12">
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" id="sel2" ng-model="order.availebleDay">
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wedesday">Wedesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>       
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+      </div>      
+    </div>
+
+<label>Start Date</label>
+    <div class="row">
+
+        <div class="col-xs-12">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.startDate" is-open="startDateOpen"  datepicker-options="dateOptions"  />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event,'start')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+
+
+    <label>End Date</label>
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.endDate" is-open="endDateOpen"  datepicker-options="dateOptions"  />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event,'end')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+
+
+  <div class="row">  
+    <div class="col-xs-12">
+          <label>Start time:</label>
+    </div>
+    <div class="col-xs-12">
+         <timepicker ng-model="order.startTime" hour-step="hstep" minute-step="mstep" show-meridian="isStartMeridian"></timepicker>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-xs-12">
+          <label>End time:</label>
+    </div>   
+    <div class="col-xs-12">
+         <timepicker ng-model="order.endTime" hour-step="hstep" minute-step="mstep" show-meridian="isEndMeridian"></timepicker>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-xs-12">
+           <label>Description</label>
+    </div>   
+    <div class="col-xs-12">
+        <textarea rows="4" cols="50" class="form-control" ng-model="order.desc" placeholder="Type of people needed in breif"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+            <label>Phone number</label>
+    </div>   
+    <div class="col-xs-12">
+       <input type="number" class="form-control" ng-model="order.mob" placeholder="Mobile Number"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Mail id</label> 
+    </div>   
+    <div class="col-xs-12">
+       <input type="email" class="form-control" ng-model="order.email" placeholder="Email id"/>
+    </div>
+  </div>
+      Drag the location of work
+    <div pinlocation> </div><br />
+    <a class="btn btn-success" ng-click="getManPower()">Submit</a>
+    <a class="btn btn-success" ng-click="cancle()">Cancle</a>
+</form>
+<div ng-show="placedSuccess">
+  <alert type="success" >You successfully placed order! Our care people contact you soon </alert>
+  <button class="btn btn-success" ng-click="placeNewOrder()">place new order</button>
+</div>
+</div>

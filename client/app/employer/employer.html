@@ -1,0 +1,162 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <h1>Client requirement</h1>
+<form action="" name="employerForm" ng-show="!placedSuccess" novalidate>
+
+  <div class="row form-group" ng-class="{ 'has-success': employerForm.empCount.$valid && submitted,
+                                            'has-error': employerForm.empCount.$invalid && submitted }">
+    <div class="col-xs-12">
+        <label>Number of employees:</label>
+    </div>
+
+    <div class="col-xs-12">
+        <input type="number" class="form-control" name="empCount" ng-model="order.empCount" placeholder="employee count" required></input>
+    </div>
+
+    <div class="col-xs-12" style="color:red" ng-show="employerForm.empCount.$dirty && employerForm.empCount.$invalid">
+        <div ng-show="employerForm.empCount.$error.required">Employee count is required</div>
+        <div ng-show="employerForm.empCount.$error.number">Invalid Number</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Type of employement:</label>
+    </div>
+    <div class="col-xs-12">
+       <select class="form-control" ng-model="order.typeOfWork"> 
+          <option value="fullTime" >fullTime</option>
+          <option value="partTime" >partTime</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Type of shift:</label>
+    </div>
+    <div class="col-xs-12">
+        <select class="form-control" ng-model="order.typeOfShift"> 
+          <option value="dayShift">dayShift</option>
+          <option value="nightShift">nightShift</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <label>Days to work:</label>
+    </div>
+    <div class="col-xs-12">
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" name="workingDays" id="sel2" ng-model="order.availebleDay"  required>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wedesday">Wedesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>       
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+      </div>      
+    </div>
+
+<label>Start Date</label>
+     <div class="row form-group" ng-class="{ 'has-success': employerForm.empStartDate.$valid && submitted,
+                                            'has-error': employerForm.empStartDate.$invalid && submitted }">
+        <div class="col-xs-12">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.startDate" is-open="startDateOpen" name="empStartDate" datepicker-options="dateOptions"  min="{{today}}" required />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event,'start')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+        <div class="col-xs-12" style="color:red" ng-show="employerForm.empStartDate.$dirty && employerForm.empStartDate.$invalid">
+            <div ng-show="employerForm.empStartDate.$error.required">Employee start date  Number is required</div>
+            <div ng-show="employerForm.empStartDate.$error.min">date should not be less than  todays date</div>
+        </div>   
+     </div>
+
+
+    <label>End Date</label>
+     <div class="row form-group" ng-class="{ 'has-success': employerForm.empEndDate.$valid && submitted,
+                                            'has-error': employerForm.empEndDate.$invalid && submitted }">
+ 
+        <div class="col-xs-12">
+            <p class="input-group" ng-model="format">
+              <input type="text" class="form-control" name="empEndDate" datepicker-popup="{{format}}" ng-model="order.endDate" is-open="endDateOpen"  datepicker-options="dateOptions"  required />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event,'end')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+
+
+  <div class="row">  
+    <div class="col-xs-12">
+          <label>Start time:</label>
+    </div>
+    <div class="col-xs-12">
+         <timepicker ng-model="order.startTime" hour-step="hstep" minute-step="mstep" show-meridian="isStartMeridian"></timepicker>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-xs-12">
+          <label>End time:</label>
+    </div>   
+    <div class="col-xs-12">
+         <timepicker ng-model="order.endTime" hour-step="hstep" minute-step="mstep" show-meridian="isEndMeridian"></timepicker>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-xs-12">
+           <label>Description</label>
+    </div>   
+    <div class="col-xs-12">
+        <textarea rows="4" cols="50" class="form-control" ng-model="order.desc" placeholder="Type of people needed in breif"></textarea>
+    </div>
+  </div>
+
+  <div class="row form-group" ng-class="{ 'has-success': employerForm.empPhoneNumber.$valid && submitted,
+                                            'has-error': employerForm.empPhoneNumber.$invalid && submitted }">
+    <div class="col-xs-12">
+            <label>Phone number</label>
+    </div>   
+    <div class="col-xs-12">
+       <input type="number" name="empPhoneNumber" class="form-control" ng-model="order.mob" placeholder="Mobile Number"  ng-minlength=10 ng-maxlength=10  required/>
+    </div>
+    <div class="col-xs-12" style="color:red" ng-show="employerForm.empPhoneNumber.$dirty && employerForm.empPhoneNumber.$invalid">
+        <div ng-show="employerForm.empPhoneNumber.$error.required">Employee conttact Number is required</div>
+        <div ng-show="employerForm.empPhoneNumber.$error.maxlength">Employee conttact Number should be max 10</div>
+        <div ng-show="employerForm.empPhoneNumber.$error.minlength">Employee conttact Number should be min 10</div>
+        <div ng-show="employerForm.empPhoneNumber.$error.number">Invalid Number</div>
+    </div>
+  </div>
+  <div class="row form-group" ng-class="{ 'has-success': employerForm.empEmail.$valid && submitted,
+                                            'has-error': employerForm.empEmail.$invalid && submitted }">
+    <div class="col-xs-12">
+        <label>Mail id</label> 
+    </div>   
+    <div class="col-xs-12">
+       <input type="email" name="empEmail" class="form-control" ng-model="order.email" placeholder="Email id" required/>
+    </div>
+    <div class="col-xs-12" style="color:red" ng-show="employerForm.empEmail.$dirty && employerForm.empEmail.$invalid">
+        <div ng-show="employerForm.empEmail.$error.required">Employee Email Id  is required</div>
+        <div ng-show="employerForm.empEmail.$error.email">Invalid Email Id</div>
+    </div>
+  </div>
+      Drag the location of work
+    <div pinlocation> </div><br />
+    <a class="btn btn-success" ng-click="getManPower()">Submit</a>
+    <a class="btn btn-success" ng-click="cancle()">Cancle</a>
+</form>
+<div ng-show="placedSuccess">
+  <alert type="success" close="closeAlert($index)">You successfully placed order!</alert>
+  <button class="btn btn-success" ng-click="placeNewOrder()">place order</button>
+</div>
+</div>

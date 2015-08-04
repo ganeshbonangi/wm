@@ -1,0 +1,188 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 ng-show="adduserbtn">Adding new user</h1>
+      <h1 ng-show="edituserbtn">Editing user</h1>
+    </div>
+    <div class="col-sm-12">
+
+<div class="form-group" ng-class="{ 'has-success': form.role.$valid && submitted,
+                                            'has-error': form.role.$invalid && submitted }">
+    <label>User is a</label>
+      <div class="row">
+        <div class="col-lg-6">
+            <label class="form-control">
+                <input type="radio"  name="role" value="worker" 
+                        ng-model="user.role" 
+                        required 
+                        ng-change="roleChanged()" />
+                Worker
+            </label>
+        </div>
+        <div class="col-lg-6">
+            <label class="form-control">
+                <input type="radio" name="role" value="employer"
+                       ng-model="user.role" 
+                       required
+                       ng-change="roleChanged()" />
+                Employer
+            </label>
+        </div>
+          <p class="help-block" ng-show="form.role.$error.required && submitted">
+            What's your Role?
+          </p>
+      </div>
+    </div>
+      <form class="form" name="form" ng-submit="register(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="user.name"
+                 required placeholder="Name"/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            Tell us your name
+          </p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': form.mobile.$valid && submitted,
+                                            'has-error': form.mobile.$invalid && submitted }">
+          <label>Mobile number</label>
+          <div class="input-group">
+            <div class="input-group-addon">+91</div>
+            <input type="number" name="mobile" class="form-control" ng-model="user.mobile"
+                   required 
+                   ng-minlength=10
+                   ng-maxlength=10
+                   placeholder="Mobile number"
+                   />
+            <div class="input-group-addon glyphicon glyphicon-phone"></div>
+          </div>
+          <p class="help-block" ng-show="form.mobile.$error.required && submitted">
+            Mobile should not empty
+          </p>
+          <p class="help-block"
+             ng-show="(form.mobile.$error.minlength || form.mobile.$error.maxlength) && submitted">
+            Mobile numeber must 10 characters.
+          </p>
+          <p class="help-block"
+             ng-show="form.mobile.$error.number && submitted">
+            Mobile numeber must be number
+          </p>
+          <p class="help-block" ng-show="form.mobile.$error.mongoose">
+            {{ errors.mobile }}
+          </p>
+        </div>
+ 
+        <div  class="form-group"  ng-show="adduserbtn" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+          <label>Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.password"
+                 ng-minlength="3"
+                 required
+                 mongoose-error
+                 placeholder="Password"/>
+          <p class="help-block"
+             ng-show="form.password.$error.required && submitted">
+            Set your password
+          </p>
+          <p class="help-block"
+             ng-show="form.password.$error.minlength && submitted">
+            Password must be at least 3 characters.
+          </p>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            {{ errors.password }}
+          </p>
+        </div>
+        <div pinlocation lat={{user.location.lat}} lng={{user.location.lng}} status={{user.status}}></div>
+        <div class="form-group" ng-show="visablejson.skills" ng-class="{ 'has-success': form.skills.$valid && submitted,
+                                            'has-error': form.skills.$invalid && submitted }">
+          <label>Pin your skills</label>
+
+          <input type="text" name="skills" class="form-control" ng-model="user.skills"
+                 required
+                 placeholder="skills"
+                 />
+          <p class="help-block" ng-show="form.skills.$error.required && submitted">
+            Set your skills
+          </p>
+          <p class="help-block" ng-show="form.skills.$error.mongoose">
+            {{ errors.skills }}
+          </p>
+       </div>
+
+
+
+        <div class="form-group" ng-show="visablejson.status" ng-class="{ 'has-success': form.status.$valid && submitted,
+                                              'has-error': form.status.$invalid && submitted }">
+          <label>Status acitve or nonactive?</label>
+          <div class="row">
+            <div class="col-lg-6">
+              <label class="form-control">
+                  <input type="radio"  name="status" value="active" 
+                          ng-model="user.status" 
+                          required />
+                  Active
+              </label>
+          </div>
+          <div class="col-lg-6">
+              <label class="form-control">
+                  <input type="radio" name="status" value="nonactive"
+                         ng-model="user.status" 
+                         required />
+                  Nonactive
+              </label>
+          </div>
+            <p class="help-block" ng-show="form.status.$error.required && submitted">
+              What's your status?
+            </p>
+          </div>
+        </div>
+        <div class="form-group" ng-show="visablejson.gender" 
+                                ng-class="{ 'has-success': form.gender.$valid && submitted,
+                                            'has-error': form.gender.$invalid && submitted }">
+          <label>Gender</label>
+          <div class="row">
+            <div class="col-lg-6">
+                <label class="form-control">
+                    <input type="radio"  name="gender" value="male" 
+                            ng-model="user.gender" 
+                            required />
+                    Male
+                </label>
+            </div>
+            <div class="col-lg-6">
+                <label class="form-control">
+                    <input type="radio" name="gender" value="female"
+                           ng-model="user.gender" 
+                           required />
+                    Female
+                </label>
+            </div>
+              <p class="help-block" ng-show="form.gender.$error.required && submitted">
+                What's your gender?
+              </p>
+          </div>
+        </div>
+        <div>
+            <a class="btn btn-inverse btn-lg" ng-show="adduserbtn"  ng-click="addUser(form)">
+              Add User
+            </a>
+            <a class="btn btn-inverse btn-lg" ng-show="edituserbtn" ng-click="updateUser(user)">
+              Save Changes
+            </a>
+          <!--   <button class="btn btn-inverse btn-lg btn-cancelChainges" ng-click="closeModel()">
+              Cancel
+            </button> -->
+
+            <a class="btn btn-lg" ng-click="closeModel()">
+              Cancel
+            </a>
+
+
+        </div>
+    </form>
+    </div>
+  </div>
+  <hr>
+</div>

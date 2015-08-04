@@ -1,0 +1,7 @@
+.trash { color:rgb(209, 91, 71); }
+.modal-dialog .container{
+	max-width: 600px;
+}
+.operation_Icons{
+	cursor: pointer;
+}

@@ -1,0 +1,22 @@
+ ☐ Functionality
+   ✔ service taking time need to implemnt when response comes regarding to all users @done (15-02-22 21:05)
+   ☐ popup closing and open when it is cliked on the icon again
+   ☐ popup closing when clicking else where on the map 
+   ✔ marker coloring when editing and entering the profile @done (15-02-22 21:27)
+   ☐ Icon on the top to close the popup
+ ☐ Crosser browser
+   ☐ ie map issues
+ ✔ Making Responcsive webapp @done (15-03-01 19:22)
+ ☐ Webview app(browser app to be installed in mobile devices)
+ ✔ validation @done (15-03-01 19:05)
+ ☐ Home view content
+ ✔ Making profile editing @done (15-03-01 19:05)
+ ☐ toggling of panel of editing profile.
+ ☐ map rendering in profile editing $scope.user = User.get(); making problem
+ ✔ adding responcive in the modal @done (15-03-01 19:21)
+ ☐ seaching by name phone number or id number
+ ☐ Login with social Media
+ ☐ available data(sunday only saterday or specified time)
+ ☐ adding skills
+ ☐ Employer work filling form
+ ☐ zoom feature as per the map view(in individual and admin should vari)

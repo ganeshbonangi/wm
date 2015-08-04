@@ -1,0 +1,189 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container noselect">
+  <div class="row">
+    <!--div class="col-sm-12">
+      <h1>Change Password</h1>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+
+        <div class="form-group">
+          <label>Current Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>New Password</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                 ng-minlength="3"
+                 required/>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+
+        <p class="help-block"> {{ message }} </p>
+
+        <button class="btn btn-default" type="submit">Save changes</button>
+      </form>
+
+
+    </div-->
+
+<div class="col-sm-12">
+<!--      <form class="form">
+      <div class="row hoverable" ng-click="editName=!editName">      
+          <div class="col-sm-3">
+            <label>Name</label>
+          </div>
+          <div class="col-sm-6" > <span ng-bind="user.name"></span> </div>
+          <a class="col-sm-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+      <div ng-show="editName" class="formcontainer">
+        <input type="text" class="form-control form-group" ng-model="user.name"
+                 ng-minlength="50"
+                 required/>
+        <button class="btn btn-default" type="submit" ng-click="changeUserName()">Save changes</button>
+        <button class="btn btn-default" type="submit">Cancel</button>
+      </div>
+    </form>  -->
+
+    <div>
+      <div class="row hoverable" ng-click="openPanel('editName')">      
+          <div class="col-xs-3">
+            <label>Name</label>
+          </div>
+          <div class="col-xs-6" > <span ng-bind="user.name"></span> </div>
+          <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+        <div ng-show="editName" class="formcontainer">
+        <input type="text" ng-model="user.name" class="form-control"/>
+        <button class="btn btn-default" type="submit" ng-click="changeUserName()">Save changes</button>
+        <button class="btn btn-default" ng-click="cancel('editName')">Cancel</button>
+      </div>
+    </div>
+    <form class="form" name="password" ng-submit="changePassword(password)">
+      <div class="row hoverable" ng-click="openPanel('editPassword')">      
+          <div class="col-xs-3"><label>Password</label></div>
+          <div class="col-xs-6">Change the password</div>
+          <a class="col-xs-3
+           glyphicon glyphicon-pencil">Edit</a>
+      </div>
+      <div ng-show="editPassword" class="formcontainer">
+          <div class="form-group">
+          <label>Current Password</label>
+          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>New Password</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                 ng-minlength="3"
+                 required/>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+
+        <p class="help-block"> {{ passWordmessage }} </p>
+
+        <button class="btn btn-default" type="submit">Save changes</button>
+        <button class="btn btn-default" ng-click="cancel('editPassword')">Cancel</button>
+      </div>
+    </form>
+    <form class="form" name="userStatus" ng-show="user.role=='worker'">
+      <div class="row hoverable" ng-click="openPanel('editStatus')">      
+          <div class="col-xs-3"><label>Status</label></div>
+          <div class="col-xs-6">{{user.status}}</div>
+          <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+        <div class="formcontainer" class="form-group" ng-show="editStatus" ng-class="{ 'has-success': userStatus.status.$valid && submitted,
+                                              'has-error': userStatus.status.$invalid && submitted }">
+          <label>Status acitve or nonactive?</label>
+          <div class="row hoverable">
+            <div class="col-lg-6">
+              <label class="form-control">
+                  <input type="radio"  name="status" value="active" 
+                          ng-model="user.status" 
+                          ng-change="changeStatus(userStatus)"
+                          required />
+                  Active
+              </label>
+          </div>
+          <div class="col-lg-6">
+              <label class="form-control">
+                  <input type="radio" name="status" value="nonactive"
+                         ng-model="user.status" 
+                         ng-change="changeStatus(userStatus)"
+                         required />
+                  Nonactive
+              </label>
+          </div>
+            <!--p class="help-block" ng-show="form.status.$error.required && submitted">
+              What's your status?
+            </p-->
+          </div>
+        </div>
+    </form>
+    <div>
+      <div class="row hoverable" ng-click="openPanel('editNumber')">      
+          <div class="col-xs-3">
+            <label>Mobile Number</label>
+          </div>
+          <div class="col-xs-6" > <span ng-bind="user.mobile"></span> </div>
+          <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+        <div ng-show="editNumber" class="formcontainer">
+        <input type="text" ng-model="user.mobile" class="form-control"/>
+        <button class="btn btn-default" type="submit" ng-click="changeMobile()">Save changes</button>
+        <button class="btn btn-default" ng-click="cancel('editNumber')">Cancel</button>
+      </div>
+    </div>
+
+    <div ng-show="user.role=='worker'">
+      <div class="row hoverable" ng-click="openPanel('editSkills')">      
+          <div class="col-xs-3">
+            <label>Skills</label>
+          </div>
+          <div class="col-xs-6" > <span ng-bind="user.skills"></span> </div>
+          <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+        <div ng-show="editSkills" class="formcontainer">
+        <input type="text" ng-model="user.skills" class="form-control"/>
+        <button class="btn btn-default" type="submit" ng-click="changeSkills()">Save changes</button>
+        <button class="btn btn-default" ng-click="cancel('editSkills')">Cancel</button>
+      </div>
+    </div>
+
+    <form class="form" name="userLocation" ng-submit="changeLocation('userLocation')">
+      <div class="row hoverable" ng-click="openPanel('editLocation')">      
+          <div class="col-xs-3"><label>Location</label></div>
+          <div class="col-xs-6">{{address}}</div>
+          <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
+      </div>
+      <div ng-show="true"><!-- editLocation -->
+        <div pinlocation lat={{user.location.lat}} lng={{user.location.lng}} status={{user.status}}></div>
+        <button class="btn btn-default" type="submit">Save changes</button>
+        <button class="btn btn-default" ng-click="cancel('editLocation')">Cancel</button>
+      </div>
+    </form>
+</div>
+</div>
+
+
+  </div>
+</div>
