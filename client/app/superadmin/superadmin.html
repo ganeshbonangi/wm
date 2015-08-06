@@ -1,0 +1,48 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <button type="button" class="btn btn-success btn-primary btn-lg btn-block" ng-click="addUser('lg')"><span class="glyphicon glyphicon-user">   Create New User</span></button>
+  <hr />
+	<label>Worker map</label>
+	<div id="workermap" class="col-sm-12" style="height: 400px;"></div>
+  <hr />
+	<label>Orders map</label>
+	<div id="ordermap" class="col-sm-12" style="height: 400px;">  </div>
+  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="user in users">
+        <strong>{{user.name}}</strong><br>
+        <span class="text-muted">{{user.mobile}}</span>
+       <!--  <a ng-click="delete(user)" class="trash">
+          <span class="glyphicon glyphicon-trash pull-right"></span>
+        </a>
+        <a ng-click="edit(user)" class="trash">
+          <span class="glyphicon glyphicon-edit "></span>
+        </a> -->
+        <a ng-click="edit(user)" class="pull-right operation_Icons"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a  ng-click="delete(user)"  class="pull-right operation_Icons"><i class="glyphicon glyphicon-trash"></i> Delete &nbsp;</a>
+    </li>
+  </ul>
+
+  <!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="order in awesomeOrders">
+        <li><a href="#" tooltip="{{order.typeOfShift}}">{{order.typeOfWork}}<button type="button" class="close" ng-click="deleteOrder(order)">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="order-form">
+    <label>Syncs in realtime across clients</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new order here." ng-model="newOrder">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addOrder()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div> -->
+
+</div>

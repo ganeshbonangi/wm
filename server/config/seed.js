@@ -79,6 +79,18 @@ User.find({}).remove(function() {
         }
   }, {
     provider: 'local',
+    role: 'superadmin',
+    name: 'superadmin',
+    mobile: '1234567871',
+    password: 'superadmin',
+    gender : 'male',
+    location : {
+                address : 'Unit 2, Aarey Road, Passpoli, Goregaon East, Mumbai, Maharashtra 400087, India',
+                lat : 14.698848,
+                lng : 79
+        }
+  }, {
+    provider: 'local',
     role: 'employer',
     name: 'emp',
     mobile: '1234567892',

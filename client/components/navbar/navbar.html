@@ -14,6 +14,7 @@
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
+        <li ng-show="isSuperAdmin()" ng-class="{active: isActive('/superadmin')}"><a href="/superadmin">Super Admin</a></li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
         <li ng-show="isEmployer()" ng-class="{active: isActive('/employer')}"><a href="/employer">Employer</a></li>
       </ul>

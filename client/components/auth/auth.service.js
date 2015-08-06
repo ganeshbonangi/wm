@@ -243,6 +243,9 @@ angular.module('workerManagementSystemApp')
       isEmployer: function() {
         return currentUser.role === 'employer';
       },
+      isSuperAdmin: function() {
+        return currentUser.role === 'superadmin';
+      },
 
       /**
        * Get auth token

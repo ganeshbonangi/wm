@@ -11,6 +11,7 @@ angular.module('workerManagementSystemApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.isEmployer = Auth.isEmployer;
+    $scope.isSuperAdmin = Auth.isSuperAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
