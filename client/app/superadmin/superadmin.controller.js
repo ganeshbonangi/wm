@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workerManagementSystemApp')
-  .controller('SuperAdminCtrl', function ($scope, $http, Auth, User, $timeout, $modal, socket) {
+  .controller('SuperAdminCtrl', function ($scope, $http, Auth, User, $timeout, $modal, socket, locationSer) {
     // Use the User $resource to fetch all users
     User.query({}, function(users) {
           $scope.users = users;
@@ -39,9 +39,12 @@ angular.module('workerManagementSystemApp')
     //console.log(user);
     });
     $scope.init = function() {
-      var locations = [];
-      var admins = [];
-      for(var i=0;i<$scope.users.length;i++){
+      var locations;
+      var admins;
+      $scope.objectCollection = locationSer.mapMarkerHtml($scope.users);
+      locations = $scope.objectCollection.workers;
+      admins = $scope.objectCollection.admins;
+      /*for(var i=0;i<$scope.users.length;i++){
         var b = [];
         var user = $scope.users[i];
         if( user.role !== 'admin' && user.role !== 'superadmin' && typeof user != undefined ){
@@ -59,7 +62,7 @@ angular.module('workerManagementSystemApp')
           b[4] = user.status;
           admins.push(b);
         }
-      }
+      }*/
       var adminmap = new google.maps.Map(document.getElementById('adminmap'), {
         zoom: 11,
         center: new google.maps.LatLng(19.164174, 72.948151),
@@ -95,7 +98,7 @@ angular.module('workerManagementSystemApp')
 
       var marker;
 
-      for ( i = 0; i < locations.length; i++) {  
+      for (var i = 0; i < locations.length; i++) {  
         var icon = locations[i][4]==='active'?'green-dot':'red-dot';
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -239,3 +242,7 @@ angular.module('workerManagementSystemApp')
     });
 
   });
+
+function edit(user){
+ angular.element(event.currentTarget).scope().edit(user);
+}
