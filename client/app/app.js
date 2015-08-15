@@ -50,6 +50,12 @@ angular.module('workerManagementSystemApp', [
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
+        }else if(Auth.isSuperAdmin()){
+          $location.path('/superadmin');
+        }else if(Auth.isAdmin()){
+          $location.path('/admin');
+        }else if(Auth.isEmployer()){
+          $location.path('/employer');
         }
       });
     });
