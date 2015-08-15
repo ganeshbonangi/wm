@@ -15,9 +15,9 @@ $scope.user.password='superadmin';
           mobile: $scope.user.mobile,
           password: $scope.user.password
         })
-        .then( function() {
+        .then( function(data) {
+            $location.path('/');
           // Logged in, redirect to home
-          $location.path('/');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

@@ -133,7 +133,6 @@ $http.post('/api/orders', {
   });
 
   $scope.init = function(){
-    alert("")
     $scope.order = {};
     $scope.order.availebleDay = [];  
     $scope.today();
