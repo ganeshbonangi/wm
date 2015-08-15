@@ -1,5 +1,6 @@
 'use strict';
 
+var devloperVersion = false;
 angular.module('workerManagementSystemApp', [
   'ngCookies',
   'ngResource',

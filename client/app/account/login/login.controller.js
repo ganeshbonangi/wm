@@ -4,9 +4,11 @@ angular.module('workerManagementSystemApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
-
-$scope.user.mobile=1234567871;
-$scope.user.password='superadmin';
+    if(devloperVersion/* && typeof devloperVersion*/){
+      developer();
+      $scope.user.mobile=1234567871;
+      $scope.user.password='superadmin';      
+    }
     $scope.login = function(form) {
       $scope.submitted = true;
 
