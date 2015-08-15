@@ -31,7 +31,9 @@ angular.module('workerManagementSystemApp')
         }).
         success(function(data) {
           $cookieStore.put('token', data.token);
-          currentUser = User.get();
+          currentUser = User.get(function(userdata){
+              $location.path('/'+userdata.role);
+          });
           deferred.resolve(data);
           return cb();
         }).
