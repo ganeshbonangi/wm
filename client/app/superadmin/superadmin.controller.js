@@ -174,9 +174,18 @@ angular.module('workerManagementSystemApp')
         });
     };
     $scope.edit= function(user) { 
+      var templateUrl, controller;
+      if(user.role === "employer" || user.role === "worker"){
+        templateUrl = "app/admin/addedituser/addedituser.html";
+        controller = "AddEditUserCtrl";
+      }else if(user.role === "admin"){
+        templateUrl = "app/superadmin/addeditadmin/addeditadmin.html";
+        controller = "AddEditAdminCtrl";
+      }
+
      var modalInstance = $modal.open({
-          templateUrl: 'app/admin/addedituser/addedituser.html',
-          controller: 'AddEditUserCtrl',
+          templateUrl: templateUrl,
+          controller: controller,
           size: 'lr',
           resolve: {
             user: function(){ return user;}//return should be there
