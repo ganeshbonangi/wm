@@ -5,8 +5,8 @@ angular.module('workerManagementSystemApp')
     $scope.user = {};
     $scope.errors = {};
 
-$scope.user.mobile=1234567891;
-$scope.user.password='admin';
+$scope.user.mobile=1234567871;
+$scope.user.password='superadmin';
     $scope.login = function(form) {
       $scope.submitted = true;
 

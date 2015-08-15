@@ -154,6 +154,22 @@ angular.module('workerManagementSystemApp')
         });
     };
 
+    $scope.addAdmin = function(size) {
+     var modalInstance = $modal.open({
+          templateUrl: 'app/superadmin/addeditadmin/addeditadmin.html',
+          controller: 'AddEditAdminCtrl',
+          size: size,
+          resolve: {
+            user: null
+          }
+        });
+       /* modalInstance.result.then(function ( ) {
+            $scope.users = User.query();//$scope.users.push(newUser);
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });*/
+    };
+
     $scope.awesomeOrders = [];
 
     $http.get('/api/orders').success(function(awesomeOrders) {
