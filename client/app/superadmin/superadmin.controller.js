@@ -44,14 +44,14 @@ angular.module('workerManagementSystemApp')
       for(var i=0;i<$scope.users.length;i++){
         var b = [];
         var user = $scope.users[i];
-        if( user.role !== 'admin' && user.role !== 'superadmin' ){
+        if( user.role !== 'admin' && user.role !== 'superadmin' && typeof user != undefined ){
           b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
           b[1] = parseFloat(user.location.lat);
           b[2] = parseFloat(user.location.lng);
           b[3] = user.name;
           b[4] = user.status;
           locations.push(b);
-        }else if( user.role === 'admin' ){
+        }else if( user.role === 'admin' && typeof user != undefined ){
           b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
           b[1] = parseFloat(user.location.lat);
           b[2] = parseFloat(user.location.lng);
@@ -67,12 +67,12 @@ angular.module('workerManagementSystemApp')
       });
 
       var marker;
-
+      console.log(admins);
       for ( i = 0; i < admins.length; i++) {  
         var icon = admins[i][4]==='active'?'green-dot':'red-dot';
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(admins[i][1], admins[i][2]),
-          map: workermap,
+          map: adminmap,
           title: admins[i][3],
           icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/' + icon + '.png')
         });
@@ -83,7 +83,7 @@ angular.module('workerManagementSystemApp')
             //infowindow.setContent();
             // $timeout(function(){infowindow.close();});
             
-            infowindow.open(workermap, marker);
+            infowindow.open(adminmap, marker);
           };
         })(marker, i));
       }

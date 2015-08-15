@@ -31,7 +31,8 @@ angular.module('workerManagementSystemApp')
           password : $scope.admin.password,
           location : locat,
           status : $scope.admin.status,
-          gender : $scope.admin.gender
+          gender : $scope.admin.gender,
+          role:$scope.admin.role
         })
         .then( function() {
           // Account created, redirect to home
@@ -72,7 +73,7 @@ angular.module('workerManagementSystemApp')
      //$scope.$apply();
     };
     $scope.addAdmin = function( ) {
-      console.log($scope.admin)
+      $scope.admin.role='admin';
       $scope.register('modal');
       //$modalInstance.close($scope.user);
       //$scope.closeModel();
