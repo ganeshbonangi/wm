@@ -18,7 +18,7 @@ angular.module('workerManagementSystemApp')
           password: $scope.user.password
         })
         .then( function(data) {
-            $location.path('/');
+            //$location.path('/');
           // Logged in, redirect to home
         })
         .catch( function(err) {
