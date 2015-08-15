@@ -40,17 +40,52 @@ angular.module('workerManagementSystemApp')
     });
     $scope.init = function() {
       var locations = [];
+      var admins = [];
       for(var i=0;i<$scope.users.length;i++){
         var b = [];
         var user = $scope.users[i];
-        if( user.role !== 'admin' ){
+        if( user.role !== 'admin' && user.role !== 'superadmin' ){
           b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
           b[1] = parseFloat(user.location.lat);
           b[2] = parseFloat(user.location.lng);
           b[3] = user.name;
           b[4] = user.status;
           locations.push(b);
+        }else if( user.role === 'admin' ){
+          b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
+          b[1] = parseFloat(user.location.lat);
+          b[2] = parseFloat(user.location.lng);
+          b[3] = user.name;
+          b[4] = user.status;
+          admins.push(b);
         }
+      }
+      var adminmap = new google.maps.Map(document.getElementById('adminmap'), {
+        zoom: 11,
+        center: new google.maps.LatLng(19.164174, 72.948151),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+      var marker;
+
+      for ( i = 0; i < admins.length; i++) {  
+        var icon = admins[i][4]==='active'?'green-dot':'red-dot';
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(admins[i][1], admins[i][2]),
+          map: workermap,
+          title: admins[i][3],
+          icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/' + icon + '.png')
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            var infowindow = new google.maps.InfoWindow({content:admins[i][0]});
+            //infowindow.setContent();
+            // $timeout(function(){infowindow.close();});
+            
+            infowindow.open(workermap, marker);
+          };
+        })(marker, i));
       }
       var workermap = new google.maps.Map(document.getElementById('workermap'), {
         zoom: 11,
