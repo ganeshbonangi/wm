@@ -29,14 +29,8 @@ angular.module('workerManagementSystemApp')
      $scope.init();
     });   
      $scope.$on('createUpdate', function(event,user) {
-      //$scope.count++;
-      
-         
            $scope.users.push(user);
            $scope.init();
-         
-      //$scope.$apply();
-    //console.log(user);
     });
     $scope.init = function() {
       var locations;
@@ -44,25 +38,6 @@ angular.module('workerManagementSystemApp')
       $scope.objectCollection = locationSer.mapMarkerHtml($scope.users);
       locations = $scope.objectCollection.workers;
       admins = $scope.objectCollection.admins;
-      /*for(var i=0;i<$scope.users.length;i++){
-        var b = [];
-        var user = $scope.users[i];
-        if( user.role !== 'admin' && user.role !== 'superadmin' && typeof user != undefined ){
-          b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
-          b[1] = parseFloat(user.location.lat);
-          b[2] = parseFloat(user.location.lng);
-          b[3] = user.name;
-          b[4] = user.status;
-          locations.push(b);
-        }else if( user.role === 'admin' && typeof user != undefined ){
-          b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
-          b[1] = parseFloat(user.location.lat);
-          b[2] = parseFloat(user.location.lng);
-          b[3] = user.name;
-          b[4] = user.status;
-          admins.push(b);
-        }
-      }*/
       var adminmap = new google.maps.Map(document.getElementById('adminmap'), {
         zoom: 11,
         center: new google.maps.LatLng(19.164174, 72.948151),
@@ -70,7 +45,6 @@ angular.module('workerManagementSystemApp')
       });
 
       var marker;
-      console.log(admins);
       for ( i = 0; i < admins.length; i++) {  
         var icon = admins[i][4]==='active'?'green-dot':'red-dot';
         marker = new google.maps.Marker({
@@ -154,7 +128,7 @@ angular.module('workerManagementSystemApp')
 
     $scope.addUser = function(size) {
      var modalInstance = $modal.open({
-          templateUrl: 'app/admin/addedituser/addedituser.html',
+          templateUrl: 'components/addedituser/addedituser.html',
           controller: 'AddEditUserCtrl',
           size: size,
           resolve: {
@@ -170,10 +144,10 @@ angular.module('workerManagementSystemApp')
     $scope.edit= function(user) { 
       var templateUrl, controller;
       if(user.role === "employer" || user.role === "worker"){
-        templateUrl = "app/admin/addedituser/addedituser.html";
+        templateUrl = "components/addedituser/addedituser.html";
         controller = "AddEditUserCtrl";
       }else if(user.role === "admin"){
-        templateUrl = "app/superadmin/addeditadmin/addeditadmin.html";
+        templateUrl = "components/addeditadmin/addeditadmin.html";
         controller = "AddEditAdminCtrl";
       }
 
@@ -194,7 +168,7 @@ angular.module('workerManagementSystemApp')
 
     $scope.addAdmin = function(size) {
      var modalInstance = $modal.open({
-          templateUrl: 'app/superadmin/addeditadmin/addeditadmin.html',
+          templateUrl: 'components/addeditadmin/addeditadmin.html',
           controller: 'AddEditAdminCtrl',
           size: size,
           resolve: {

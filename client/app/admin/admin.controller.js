@@ -29,14 +29,8 @@ angular.module('workerManagementSystemApp')
      $scope.init();
     });   
      $scope.$on('createUpdate', function(event,user) {
-      //$scope.count++;
-      
-         
            $scope.users.push(user);
            $scope.init();
-         
-      //$scope.$apply();
-    //console.log(user);
     });
     $scope.init = function() {
       var locations = [];
@@ -106,7 +100,7 @@ angular.module('workerManagementSystemApp')
 
     $scope.addUser = function(size) {
      var modalInstance = $modal.open({
-          templateUrl: 'app/admin/addedituser/addedituser.html',
+          templateUrl: 'components/addedituser/addedituser.html',
           controller: 'AddEditUserCtrl',
           size: size,
           resolve: {
@@ -121,7 +115,7 @@ angular.module('workerManagementSystemApp')
     };
     $scope.edit= function(user) { 
      var modalInstance = $modal.open({
-          templateUrl: 'app/admin/addedituser/addedituser.html',
+          templateUrl: 'components/addedituser/addedituser.html',
           controller: 'AddEditUserCtrl',
           size: 'lr',
           resolve: {

@@ -1,23 +1,25 @@
 'use strict';
 
 angular.module('workerManagementSystemApp')
-  .controller('AddEditAdminCtrl', function ($scope, Auth, $location, $window, locationSer, $modalInstance, user) {
+  .controller('AddEditUserCtrl', function ($scope, Auth, $location, $window, locationSer, $modalInstance, user) {
     $scope.init = function() {
       if(user){
-        $scope.admin =  user;  
-        $scope.addadminbtn = false;
-        $scope.editadminbtn = true;
+        $scope.user =  user;  
+        $scope.adduserbtn = false;
+        $scope.edituserbtn = true;
       }else{
-        $scope.admin =  {};
-        $scope.addadminbtn = true;
-        $scope.editadminbtn = false;
+        $scope.user =  {};
+        $scope.user.role = 'worker';
+        $scope.adduserbtn = true;
+        $scope.edituserbtn = false;
       }
+
+      $scope.roleChanged();
       $scope.errors = {};      
     };
 
     $scope.register = function( ) {
       $scope.submitted = true;
-
       //if(form.$valid) {
         var locat={
                     lat : locationSer.lat,
@@ -26,13 +28,14 @@ angular.module('workerManagementSystemApp')
                   };  
              $scope.location =  locat;     
         Auth.createUserByAdmin({
-          name : $scope.admin.name,
-          mobile : $scope.admin.mobile,
-          password : $scope.admin.password,
+          name : $scope.user.name,
+          mobile : $scope.user.mobile,
+          password : $scope.user.password,
           location : locat,
-          status : $scope.admin.status,
-          gender : $scope.admin.gender,
-          role:$scope.admin.role
+          status : $scope.user.status,
+          gender : $scope.user.gender,
+          role : $scope.user.role,
+          skills : $scope.user.skills
         })
         .then( function() {
           // Account created, redirect to home
@@ -49,18 +52,19 @@ angular.module('workerManagementSystemApp')
             $scope.errors[field] = error.message;
           });*/
         });
+        $scope.user.location = $scope.location;
         $scope.$parent.$broadcast('createUpdate',$scope.user);
     //  }
     };
-    $scope.updateAdmin = function(admin){  
+    $scope.updateUser = function(user){  
       var locat={
                     lat : locationSer.lat,
                     lng : locationSer.lng,
                     address : locationSer.address
                   };
-        admin.location = locat;
-       Auth.updateUser( admin );
-       $scope.$parent.$broadcast('editUpdate',admin);
+        user.location = locat;
+       Auth.updateUser( user );
+       $scope.$parent.$broadcast('editUpdate',user);
 /*       angular.forEach($scope.users, function(u, i) {
          if (u === user) {
            $scope.users[i]=user;
@@ -72,13 +76,33 @@ angular.module('workerManagementSystemApp')
      $modalInstance.dismiss('cancel');
      //$scope.$apply();
     };
-    $scope.addAdmin = function( ) {
-      $scope.admin.role='admin';
+    $scope.addUser = function( ) {
       $scope.register('modal');
       //$modalInstance.close($scope.user);
       //$scope.closeModel();
     };
-
+    $scope.roleChanged = function() {
+      if($scope.user.role === 'worker'){
+        $scope.visablejson={
+          name : true,
+          mobile : true,
+          password : true,
+          location : true,
+          status : true,
+          gender : true,
+          skills : true
+        };
+      }else{
+        $scope.visablejson={
+          name : true,
+          mobile : true,
+          password : true,
+          location : true,
+          status : false,
+          gender : false
+        };
+      }
+    };
 
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
