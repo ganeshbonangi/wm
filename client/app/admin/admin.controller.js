@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workerManagementSystemApp')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User, $timeout, $modal, socket) {
+  .controller('AdminCtrl', function ($scope, $http, Auth, User, $timeout, $modal, socket, locationSer) {
     // Use the User $resource to fetch all users
     User.query({}, function(users) {
           $scope.users = users;
@@ -40,18 +40,8 @@ angular.module('workerManagementSystemApp')
     });
     $scope.init = function() {
       var locations = [];
-      for(var i=0;i<$scope.users.length;i++){
-        var b = [];
-        var user = $scope.users[i];
-        if( user.role !== 'admin' ){
-          b[0] = '<div>'+user.name+'</div><hr/><div>'+user.gender+'</div><hr/><div>'+user.status+'</div><hr/><div>'+user.mobile+'</div>';
-          b[1] = parseFloat(user.location.lat);
-          b[2] = parseFloat(user.location.lng);
-          b[3] = user.name;
-          b[4] = user.status;
-          locations.push(b);
-        }
-      }
+      $scope.objectCollection = locationSer.mapMarkerHtml($scope.users);
+      locations = $scope.objectCollection.workers;
       var workermap = new google.maps.Map(document.getElementById('workermap'), {
         zoom: 11,
         center: new google.maps.LatLng(19.164174, 72.948151),
@@ -60,7 +50,7 @@ angular.module('workerManagementSystemApp')
 
       var marker;
 
-      for ( i = 0; i < locations.length; i++) {  
+      for ( var i = 0; i < locations.length; i++) {  
         var icon = locations[i][4]==='active'?'green-dot':'red-dot';
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -83,16 +73,7 @@ angular.module('workerManagementSystemApp')
 
     $scope.initOrder = function() {
       var locations = [];
-      for(var i=0;i<$scope.awesomeOrders.length;i++){
-        var b = [];
-        var order = $scope.awesomeOrders[i];
-          b[0] = '<div>'+order.startDate+'</div><div>'+order.endDate+'</div><div>'+order.startTime+'</div><div>'+order.endTime+'</div><div>'+order.availebleDay+'</div><div>'+order.typeOfShift+'</div><div>'+order.typeOfWork+'</div><div>Ph:'+order.mob+'</div><div>Needed:'+order.empCount+'</div><div>Desc:'+order.desc+'</div><div>mail:'+order.email+'</div>';
-          b[1] = parseFloat(order.location.lat);
-          b[2] = parseFloat(order.location.lng);
-          b[3] = order.name;
-          b[4] = order.status;
-          locations.push(b);
-      }
+      locations = locationSer.mapMarkerHtmlForOrders($scope.awesomeOrders);
       var workermap = new google.maps.Map(document.getElementById('ordermap'), {
         zoom: 11,
         center: new google.maps.LatLng(19.164174, 72.948151),
@@ -101,7 +82,7 @@ angular.module('workerManagementSystemApp')
 
       var marker;
 
-      for ( i = 0; i < locations.length; i++) {  
+      for ( var i = 0; i < locations.length; i++) {  
         var icon = locations[i][4]==='active'?'green-dot':'red-dot';
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -179,3 +160,9 @@ angular.module('workerManagementSystemApp')
     });
 
   });
+function edit(user){
+ angular.element(event.currentTarget).scope().edit(user);
+}
+function del(user){
+ angular.element(event.currentTarget).scope().delete(user);
+}
