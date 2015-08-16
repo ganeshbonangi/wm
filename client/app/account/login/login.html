@@ -4,11 +4,14 @@
   <div class="row">
     <div class="col-sm-12" id="devloperV">
     </div>
+    <h2 style="text-align:center;">
+      Sign In Form
+    </h2>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="login(form)" novalidate>
+      <form class="form form-horizontal col-sm-12" name="form" ng-submit="login(form)" novalidate>
         <div class="form-group">
-          <label>Mobile number</label>
-            <div class="input-group">
+          <label class='col-lg-2 col-sm-12 col-md-2 control-label'>Mobile number</label>
+            <div class="input-group col-sm-12 col-md-10 col-lg-10">
               <div class="input-group-addon">+91</div>
               <input type="number" name="mobile" class="form-control" ng-model="user.mobile" required placeholder="Mobile number"
               ng-minlength=10
@@ -19,9 +22,10 @@
         </div>
 
         <div class="form-group">
-          <label>Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="user.password" required placeholder="Password">
+          <label class='col-lg-2 col-md-2 col-sm-12 control-label'>Password</label>
+          <div class="input-group col-md-10 col-sm-12 col-xs-12 col-lg-10">
+            <input type="password" name="password" class="form-control" ng-model="user.password" required placeholder="Password">
+          </div>
         </div>
 
         <div class="form-group has-error">
@@ -39,7 +43,7 @@
           <p class="help-block">{{ errors.other }}</p>
         </div>
 
-        <div>
+        <div style="text-align:center;">
           <button class="btn btn-inverse btn-lg btn-login" type="submit">
             Login
           </button>
