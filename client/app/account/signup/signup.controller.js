@@ -7,7 +7,8 @@ angular.module('workerManagementSystemApp')
       $scope.user = {};
       $scope.user.role = 'worker';
       $scope.roleChanged();
-      $scope.errors = {};      
+      $scope.errors = {}; 
+      $scope.keyup = true;     
     };
 
     $scope.statusChange = function(){
@@ -43,8 +44,12 @@ angular.module('workerManagementSystemApp')
           $scope.errors = {};
           // Update validity of form fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
-            form[field].$setValidity('mongoose', false);
-            $scope.errors[field] = error.message;
+            if(field!=='mobile'){
+              form[field].$setValidity('mongoose', false);
+              $scope.errors[field] = error.message;
+            }else{
+              $scope.keyup=false;
+            }
           });
         });
       }

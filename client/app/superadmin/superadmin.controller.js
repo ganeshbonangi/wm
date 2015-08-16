@@ -246,3 +246,6 @@ angular.module('workerManagementSystemApp')
 function edit(user){
  angular.element(event.currentTarget).scope().edit(user);
 }
+function del(user){
+ angular.element(event.currentTarget).scope().delete(user);
+}

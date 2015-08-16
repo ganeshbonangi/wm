@@ -16,7 +16,7 @@ angular.module('workerManagementSystemApp')
 		        if(typeof user != undefined ){
 		        	if(user.role === "worker" || user.role === 'admin') {
 			        	var jsonStr = JSON.stringify(user);
-	         			b[0]="<div><a onclick='edit("+jsonStr+")' class='pull-right operation_Icons'><i class='glyphicon glyphicon-edit'></i> Edit</a><a  onclick='delete(user)'  class='pull-right operation_Icons'><i class='glyphicon glyphicon-trash'></i> Delete &nbsp;</a></div>";
+	         			b[0]="<div><a onclick='edit("+jsonStr+")' class='pull-right operation_Icons'><i class='glyphicon glyphicon-edit'></i> Edit</a><a  onclick='del("+jsonStr+")'  class='pull-right operation_Icons'><i class='glyphicon glyphicon-trash'></i> Delete &nbsp;</a></div>";
 				       	b[0] += "<div>"+user.name+"</div><hr/><div>"+user.gender+"</div><hr/><div>"+user.status+"</div><hr/><div>"+user.mobile+"</div>";
 			    	}
 			        b[1] = parseFloat(user.location.lat);
