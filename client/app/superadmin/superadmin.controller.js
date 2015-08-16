@@ -11,10 +11,11 @@ angular.module('workerManagementSystemApp')
     $scope.delete = function(user) {
       User.remove({ id: user._id });
       angular.forEach($scope.users, function(u, i) {
-        if (u === user) {
+        if (u.mobile === user.mobile) {
           $scope.users.splice(i, 1);
         }
       });
+      $scope.init();
     };
 
     $scope.$on('editUpdate', function(event,user) {
