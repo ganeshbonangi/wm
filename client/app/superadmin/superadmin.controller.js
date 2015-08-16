@@ -19,13 +19,12 @@ angular.module('workerManagementSystemApp')
 
     $scope.$on('editUpdate', function(event,user) {
       //$scope.count++;
+      
       angular.forEach($scope.users, function(u, i) {
-         if (u === user) {
+         if (u.mobile == user.mobile) {
            $scope.users[i]=user;
          }
        });
-      //$scope.$apply();
-    //console.log(user);
      $scope.init();
     });   
      $scope.$on('createUpdate', function(event,user) {

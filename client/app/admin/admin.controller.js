@@ -20,7 +20,7 @@ angular.module('workerManagementSystemApp')
     $scope.$on('editUpdate', function(event,user) {
       //$scope.count++;
       angular.forEach($scope.users, function(u, i) {
-         if (u === user) {
+         if (u.mobile === user.mobile) {
            $scope.users[i]=user;
          }
        });
