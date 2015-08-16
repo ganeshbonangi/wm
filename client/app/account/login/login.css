@@ -21,3 +21,9 @@
   background-color: #fafafa;
   border-color: #ccc;
 }
+@media only screen and (min-width:200px) and (max-width: 990px) {
+    .control-label {
+        text-align: left !important;
+        margin-left: -15px;
+    }
+}
