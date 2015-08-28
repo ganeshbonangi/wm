@@ -39,6 +39,7 @@ Order.find({}).remove(function() {
 "endDate":"2015-03-21T08:46:44.316Z",
 /*"typeOfShift":"dayShift",*/
 "typeOfWork":"fullTime",
+"status":"pending",
 "mob":1234567892,
 "empCount":20,
 "desc":"desc",

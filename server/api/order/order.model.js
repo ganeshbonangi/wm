@@ -16,7 +16,8 @@ var OrderSchema = new Schema({
   startTime: String,
   desc: String,
   mob: Number,
-  email: String
+  email: String,
+  status:String
 
 });
 

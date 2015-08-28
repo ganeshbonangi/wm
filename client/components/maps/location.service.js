@@ -39,7 +39,9 @@ angular.module('workerManagementSystemApp')
 	      for(var i=0;i<orders.length;i++){
 	        var b = [];
 	        var order = orders[i];
-	          b[0] = '<div>'+order.startDate+'</div><div>'+order.endDate+'</div><div>'+order.startTime+'</div><div>'+order.endTime+'</div><div>'+order.availebleDay+'</div><div>'+order.typeOfShift+'</div><div>'+order.typeOfWork+'</div><div>Ph:'+order.mob+'</div><div>Needed:'+order.empCount+'</div><div>Desc:'+order.desc+'</div><div>mail:'+order.email+'</div>';
+	        var jsonStr = JSON.stringify(order);
+	          b[0] = "<div><select onchange='updateOrder("+jsonStr+")'> <option value='pending'>Pending</option> <option value='completed'>Completed</option></select></div><div>"
+	          +order.startDate+"</div><div>"+order.endDate+"</div><div>"+order.startTime+"</div><div>"+order.endTime+"</div><div>"+order.availebleDay+"</div><div>"+order.typeOfShift+"</div><div>"+order.typeOfWork+"</div><div>Ph:"+order.mob+"</div><div>Needed:"+order.empCount+"</div><div>Desc:"+order.desc+"</div><div>mail:"+order.email+"</div>";
 	          b[1] = parseFloat(order.location.lat);
 	          b[2] = parseFloat(order.location.lng);
 	          b[3] = order.name;

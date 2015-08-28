@@ -105,7 +105,7 @@ angular.module('workerManagementSystemApp')
       var marker;
 
       for ( var i = 0; i < locations.length; i++) {  
-        var icon = locations[i][4]==='active'?'green-dot':'red-dot';
+        var icon = locations[i][4]==='pending'?'red-dot':'green-dot';
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
           map: workermap,
@@ -201,7 +201,10 @@ angular.module('workerManagementSystemApp')
     $scope.deleteOrder = function(order) {
       $http.delete('/api/orders/' + order._id);
     };
-
+    $scope.updateOrder = function(order,status){
+      order.status = status;
+      $http.put('/api/orders/'+order._id, {order:order });
+    }
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('order');
     });
@@ -213,4 +216,8 @@ function edit(user){
 }
 function del(user){
  angular.element(event.currentTarget).scope().delete(user);
+}
+function updateOrder(order){
+  var value = event.currentTarget.value;
+  angular.element(event.currentTarget).scope().updateOrder(order,value);
 }

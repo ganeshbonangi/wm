@@ -43,7 +43,7 @@ exports.update = function(req, res) {
   Order.findById(req.params.id, function (err, order) {
     if (err) { return handleError(res, err); }
     if(!order) { return res.send(404); }
-    var updated = _.merge(order, req.body);
+    var updated = _.merge(order, req.body.order);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, order);
