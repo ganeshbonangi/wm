@@ -20,6 +20,22 @@ exports.index = function(req, res) {
   });
 };
 
+//Get user specipic orders
+exports.getUserOrders = function(req, res){
+  Order.find({'placed':req.params.userId},function(err,orders){
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  })
+};
+
+//Get admin orders
+exports.getAdminOrders = function(req, res){
+  Order.find({'handledby':req.params.adminId},function(err,orders){
+    if(err) { return handleError(res, err); }
+    return res.json(200, orders);
+  })
+};
+
 // Get a single order
 exports.show = function(req, res) {
   Order.findById(req.params.id, function (err, order) {
@@ -43,7 +59,7 @@ exports.update = function(req, res) {
   Order.findById(req.params.id, function (err, order) {
     if (err) { return handleError(res, err); }
     if(!order) { return res.send(404); }
-    var updated = _.merge(order, req.body.order);
+    var updated = _.merge(order, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, order);

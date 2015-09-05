@@ -1,0 +1,12 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+  <h1>Orders</h1>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="order in orders" >
+        <strong>{{order.desc}}</strong><br>
+        <span class="text-muted">Needed:{{order.empCount}}</span>
+        <a ng-click="editOrder($index)" class="pull-right operation_Icons"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a  ng-click="delete(order)"  class="pull-right operation_Icons"><i class="glyphicon glyphicon-trash"></i> Delete &nbsp;</a>
+    </li>
+  </ul>
+</div>

@@ -1,11 +1,29 @@
-<div class="modal-header">
-  <button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
-  <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
-</div>
-<div class="modal-body">
-  <p ng-if="modal.text" ng-bind="modal.text"></p>
-  <div ng-if="modal.html" ng-bind-html="modal.html"></div>
-</div>
-<div class="modal-footer">
-  <button ng-repeat="button in modal.buttons" ng-class="button.classes" ng-click="button.click($event)" ng-bind="button.text" class="btn"></button>
+<div>
+    <div class="modal-header">
+        <span class="modal-title huge">{{title}}</span>
+        <button class="pull-right close" ng-click="cancel()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <orderform order='dataObject'> </orderform>
+    </div>
+    <!-- <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button> 
+    </div>-->
+    <style>
+    .huge{
+        font-weight: bold;
+        font-size: 2em;
+    }
+    .modal-dialog{
+        width: 70%;
+    }
+    .modal-body-c{
+        height: 390px;
+        overflow: auto;
+        padding: 15px;
+    }
+    .btncontainer{
+
+    }
+    </style>
 </div>

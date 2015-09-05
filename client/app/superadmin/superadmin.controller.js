@@ -203,7 +203,11 @@ angular.module('workerManagementSystemApp')
     };
     $scope.updateOrder = function(order,status){
       order.status = status;
-      $http.put('/api/orders/'+order._id, {order:order });
+      $http.put('/api/orders/'+order._id, {order:order }).success(function(){
+        socket.syncUpdates('order', $scope.awesomeOrders);
+        $scope.initOrder();
+      });
+
     }
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('order');

@@ -24,4 +24,18 @@ angular.module('workerManagementSystemApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+   $scope.slides = [{
+      image:"assets/images/plumber.jpg",
+      text:"Plumbing work"
+    },{
+      image: "assets/images/Nursing-home-photo.jpg",
+      text:"Health care"
+    },{
+      image:"assets/images/local-electrician-huntington-beach-area.jpg",
+      text:"Electrician"
+    },{
+      image:"assets/images/home.jpg",
+      text:"House keeping"
+    }];
   });

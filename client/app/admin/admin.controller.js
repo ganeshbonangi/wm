@@ -130,13 +130,6 @@ angular.module('workerManagementSystemApp')
         });
     };
 
-    $scope.awesomeOrders = [];
-
-    $http.get('/api/orders').success(function(awesomeOrders) {
-      $scope.awesomeOrders = awesomeOrders;
-      socket.syncUpdates('order', $scope.awesomeOrders);
-      $scope.initOrder();
-    });
 
     $scope.addOrder = function() {
       if($scope.newOrder === '') {
@@ -155,6 +148,13 @@ angular.module('workerManagementSystemApp')
     }
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('order');
+    });
+    $scope.awesomeOrders = [];
+
+    $http.get('/api/orders/admin/'+Auth.getCurrentUser()._id).success(function(awesomeOrders) {
+      $scope.awesomeOrders = awesomeOrders;
+      socket.syncUpdates('order', $scope.awesomeOrders);
+      $scope.initOrder();
     });
 
   });

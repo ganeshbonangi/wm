@@ -1,26 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
+  <div style="height:305px;">
+    <carousel interval="5000" no-wrap="false">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto; height:305px;">
+        <div class="carousel-caption">
+          <h4>{{slide.text}}</h4>
+        </div>
+      </slide>
+    </carousel>
+  </div>
   <div class="container">
-    <h1>Baki Time mey kya karta hi?</h1>
+    <h1>Baki Time mey kya karta hai?</h1>
     <!--p class="lead">Kick-start your next work with web workers</p-->
     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
   </div>
 </header>
 
 <div class="container">
-
-  <div class="row">
-    <div class="col-lg-12">
-      TELL THEM WHAT YOU DO<be /    >
-      EXPLAIN WHAT PROBLEMS YOU SOLVE<br />
-      Describing yourself on your home page
-      <!-- <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul> -->
-    </div>
-  </div>
 
   <!-- <form class="thing-form">
     <label>Syncs in realtime across clients</label>

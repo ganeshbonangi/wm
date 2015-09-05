@@ -40,9 +40,13 @@ angular.module('workerManagementSystemApp')
 	        var b = [];
 	        var order = orders[i];
 	        var jsonStr = JSON.stringify(order);
+	        var startDate = getFormatedDateString(order.startDate,true,false);
+	        var endDate = getFormatedDateString(order.endDate,true,false);
+	        var startTime =getFormatedDateString(order.startTime,false,true);
+	        var endTime = getFormatedDateString(order.endTime,false,true);
 	        var options = "<option value='pending' "+(order.status=="pending"?"selected":"")+">Pending</option> <option value='completed' "+(order.status=="completed"?"selected":"")+">Completed</option>";
 	          b[0] = "<div><select onchange='updateOrder("+jsonStr+")'>"+options+" </select></div><div>"
-	          +order.startDate+"</div><div>"+order.endDate+"</div><div>"+order.startTime+"</div><div>"+order.endTime+"</div><div>"+order.availebleDay+"</div><div>"+order.typeOfShift+"</div><div>"+order.typeOfWork+"</div><div>Ph:"+order.mob+"</div><div>Needed:"+order.empCount+"</div><div>Desc:"+order.desc+"</div><div>mail:"+order.email+"</div>";
+	          +startDate+"</div><div>"+endDate+"</div><div>"+startTime+"</div><div>"+endTime+"</div><div>"+order.availebleDay+"</div><div>"+order.typeOfShift+"</div><div>"+order.typeOfWork+"</div><div>Ph:"+order.mob+"</div><div>Needed:"+order.empCount+"</div><div>Desc:"+order.desc+"</div><div>mail:"+order.email+"</div>";
 	          b[1] = parseFloat(order.location.lat);
 	          b[2] = parseFloat(order.location.lng);
 	          b[3] = order.name;
@@ -52,4 +56,12 @@ angular.module('workerManagementSystemApp')
 	      }
       	return markup;
       };
+      function getFormatedDateString(dtStr,date,time){
+      	var d = new Date(dtStr);
+      	if(date){
+      		return [d.getDate(),d.getMonth()+1,d.getFullYear()].join('/');
+      	}else{
+      		return [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+      	}
+      }
   });

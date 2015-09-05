@@ -1,5 +1,6 @@
  ✔ Implementing the super admin @done (15-08-15 20:20)
    ✔ process: copieing admin and adding creating admin and admin map @done (15-08-15 20:20)
  ☐ back button with different roles bug
- ☐ have to introduce order status
+ ✔ have to introduce order status @done (15-08-28 15:54)
  ☐ have to make main view
+ ☐ data types of diff fields

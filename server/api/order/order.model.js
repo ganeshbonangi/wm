@@ -8,7 +8,7 @@ var OrderSchema = new Schema({
   location: Object,
   empCount: Number,
   typeOfWork: String,
-  /*typeOfShift: String,*/
+  typeOfShift: String,
   availebleDay: Array,
   startDate: String,
   endDate: String,
@@ -17,7 +17,10 @@ var OrderSchema = new Schema({
   desc: String,
   mob: Number,
   email: String,
-  status:String
+  status:String,
+  userId:Object,
+  handledby:String,
+  placed:String
 
 });
 

@@ -37,6 +37,36 @@ Order.find({}).remove(function() {
   Order.create({"availebleDay":["tuesday","wedesday","thursday"],
 "startDate":"2015-03-21T08:46:44.316Z",
 "endDate":"2015-03-21T08:46:44.316Z",
+"placed":"55e707e0b1a8731c237a463d",
+/*"typeOfShift":"dayShift",*/
+"typeOfWork":"fullTime",
+"status":"completed",
+"mob":1234567892,
+"empCount":20,
+"desc":"desc",
+"email":"jjhj@ggg.com",
+"endTime":"2015-03-20T18:59:22.557Z",
+"startTime":"2015-03-21T17:44:22.544Z",
+"location":{"lat":19.044196096205965,"lng":73.10504835000006,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
+},
+{"availebleDay":["tuesday","wedesday","thursday"],
+"startDate":"2015-03-21T08:46:44.316Z",
+"endDate":"2015-03-21T08:46:44.316Z",
+/*"typeOfShift":"dayShift",*/
+"typeOfWork":"fullTime",
+"status":"pending",
+"mob":1234567892,
+"empCount":20,
+"desc":"desc",
+"handledby":"55e707e0b1a8731c237a463d",
+"email":"jjhj@ggg.com",
+"endTime":"2015-03-20T18:59:22.557Z",
+"startTime":"2015-03-21T17:44:22.544Z",
+"location":{"lat":19.0441960965965,"lng":73.105000006,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
+},
+{"availebleDay":["tuesday","wedesday","thursday"],
+"startDate":"2015-03-21T08:46:44.316Z",
+"endDate":"2015-03-21T08:46:44.316Z",
 /*"typeOfShift":"dayShift",*/
 "typeOfWork":"fullTime",
 "status":"pending",
@@ -46,7 +76,7 @@ Order.find({}).remove(function() {
 "email":"jjhj@ggg.com",
 "endTime":"2015-03-20T18:59:22.557Z",
 "startTime":"2015-03-21T17:44:22.544Z",
-"location":{"lat":19.044196096205965,"lng":73.10504835000006,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
+"location":{"lat":19.0446205965,"lng":73.10506,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
 }
 );
 });

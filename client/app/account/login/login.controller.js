@@ -6,8 +6,8 @@ angular.module('workerManagementSystemApp')
     $scope.errors = {};
     if(devloperVersion/* && typeof devloperVersion*/){
       developer();
-      $scope.user.mobile=1234567871;
-      $scope.user.password='superadmin';      
+      $scope.user.mobile=1234567892;
+      $scope.user.password='emp';      
     }
     $scope.login = function(form) {
       $scope.submitted = true;

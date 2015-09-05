@@ -6,5 +6,8 @@ angular.module('workerManagementSystemApp')
       .when('/employer', {
         templateUrl: 'app/employer/employer.html',
         controller: 'EmpCtrl'
+      }).when('/orders', {
+        templateUrl: 'app/employer/orders.html',
+        controller: 'OrderCtrl'
       });
   });

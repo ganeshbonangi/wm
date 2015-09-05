@@ -1,9 +1,18 @@
 'use strict';
 
 angular.module('workerManagementSystemApp')
-  .controller('EmpCtrl', function ($scope, Auth, locationSer, $http, $location) {
-  
-  $scope.today = function() {
+.directive('orderform', function(Auth, locationSer, $http){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		 scope: {
+      order:'=?',
+      saveForm: '=?'
+     }, // {} = isolate, true = child, false/undefined = no change
+		 controller: function($scope, $element, $attrs, $transclude) {
+$scope.today = function() {
     $scope.order.startDate = new Date(new Date());
     $scope.today = new Date();
     $scope.order.endDate = new Date();
@@ -65,9 +74,7 @@ angular.module('workerManagementSystemApp')
     $scope.order.empCount=undefined;
     $scope.placedSuccess = false;
   };
-  $scope.cancle = function(){
-    $location.path('/home');
-  }
+
     $scope.order.location = locat;
 
 
@@ -75,7 +82,7 @@ $http.post('/api/orders', {
          location : $scope.order.location,
         empCount : $scope.order.empCount,
         typeOfWork: $scope.order.typeOfWork,
-        /*typeOfShift: $scope.order.typeOfShift,*/
+        typeOfShift: $scope.order.typeOfShift,
         availebleDay: $scope.order.availebleDay,
         startDate: $scope.order.startDate ,
         endDate: $scope.order.endDate,
@@ -92,6 +99,7 @@ $http.post('/api/orders', {
     $http.get('/api/orders').success(function(awesomeOrders) {
   /*    $scope.awesomeOrders = awesomeOrders;
       socket.syncUpdates('order', $scope.awesomeOrders);*/
+      console.log('success added');
       $scope.placedSuccess = true;
     });
 /*
@@ -115,8 +123,33 @@ $http.post('/api/orders', {
 
     //console.log($scope.order);
   }
-
-  
+  $scope.updateOrder = function(){
+    $scope.user = Auth.getCurrentUser();
+    var locat={
+      'lat' : locationSer.lat,
+      'lng' : locationSer.lng,
+      'address' : locationSer.address
+    };
+    $http.put('/api/orders/'+$scope.order._id, {
+         location : locat,
+        empCount : $scope.order.empCount,
+        typeOfWork: $scope.order.typeOfWork,
+        typeOfShift: $scope.order.typeOfShift,
+        availebleDay: $scope.order.availebleDay,
+        startDate: $scope.order.startDate ,
+        endDate: $scope.order.endDate,
+        startTime: $scope.order.startTime,
+        endTime: $scope.order.endTime,
+        desc: $scope.order.desc,
+        mob : $scope.order.mob,
+        email :$scope.order.email,
+        placed:$scope.user._id
+    });
+    $scope.cancel();
+  }
+  $scope.cancel = function(){
+    $scope.$parent.cancel();
+  }
   $scope.$watch('selected', function(nowSelected){
       $scope.order.availebleDay = [];
       
@@ -154,41 +187,24 @@ $http.post('/api/orders', {
 
     $scope.isStartMeridian = true;
     $scope.isEndMeridian = true;
-    //$scope.order.typeOfShift = 'dayShift';
+    $scope.order.typeOfShift = 'dayShift';
     $scope.order.typeOfWork = 'fullTime';
     $scope.user = Auth.getCurrentUser();
     $scope.order.mob = $scope.user.mobile;
 
   };
-  $scope.init();
-
-  }).controller('OrderCtrl',function($scope, $http, socket, Auth, $modal){
-      $http.get('/api/orders/user/'+Auth.getCurrentUser()._id).success(function(orders) {
-        $scope.orders = orders;
-        socket.syncUpdates('orders', $scope.orders);
-      });
-
-      $scope.editOrder = function(index){
-        var order = $scope.orders[index];
-          var modalInstance = $modal.open({
-          animation: true,
-          templateUrl: 'components/modal/modal.html',
-          controller: 'ModalInstanceCtrl',
-          size: 'lr',/*'sm'*/
-          resolve: {
-            title: function(){
-              return "Update your order";
-            },
-            dataObject: function () {
-              return order;
-            }
-          }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-          //$scope.selected = selectedItem;
-        }, function () {
-          //$log.info('Modal dismissed at: ' + new Date());
-        });
-      }
-  });
+  if(!$scope.order)
+    $scope.init();
+		 },
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		 templateUrl: 'components/order/order.html',
+		 //replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
