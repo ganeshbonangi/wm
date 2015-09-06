@@ -60,6 +60,12 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!order) { return res.send(404); }
     var updated = _.merge(order, req.body);
+    console.log(JSON.parse(req.body.location));
+    var loc = JSON.parse(req.body.location);
+    /*loc.address = req.body.location.address;
+    loc.lat = req.body.location.lat;
+    loc.lng = req.body.location.lng;*/
+    updated.location = loc
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, order);

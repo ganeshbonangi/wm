@@ -99,7 +99,6 @@ $http.post('/api/orders', {
     $http.get('/api/orders').success(function(awesomeOrders) {
   /*    $scope.awesomeOrders = awesomeOrders;
       socket.syncUpdates('order', $scope.awesomeOrders);*/
-      console.log('success added');
       $scope.placedSuccess = true;
     });
 /*
@@ -131,7 +130,7 @@ $http.post('/api/orders', {
       'address' : locationSer.address
     };
     $http.put('/api/orders/'+$scope.order._id, {
-         location : locat,
+         location : JSON.stringify(locat),
         empCount : $scope.order.empCount,
         typeOfWork: $scope.order.typeOfWork,
         typeOfShift: $scope.order.typeOfShift,
@@ -144,6 +143,8 @@ $http.post('/api/orders', {
         mob : $scope.order.mob,
         email :$scope.order.email,
         placed:$scope.user._id
+    }).success(function(){
+      
     });
     $scope.cancel();
   }
@@ -160,7 +161,6 @@ $http.post('/api/orders', {
           return;
       }
       angular.forEach(nowSelected, function(val){
-        console.log(val);
           $scope.order.availebleDay.push( val() );
       });
   });

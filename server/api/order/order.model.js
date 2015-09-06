@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var OrderSchema = new Schema({
 
-  location: Object,
+  location: {},
   empCount: Number,
   typeOfWork: String,
   typeOfShift: String,
@@ -18,7 +18,7 @@ var OrderSchema = new Schema({
   mob: Number,
   email: String,
   status:String,
-  userId:Object,
+  userId:{},
   handledby:String,
   placed:String
 
