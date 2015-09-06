@@ -31,14 +31,14 @@ Thing.find({}).remove(function() {
   });
 });
 
-Order.find({}).remove(function() {
+//Order.find({}).remove(function() {
 
 
   Order.create({"availebleDay":["tuesday","wedesday","thursday"],
 "startDate":"2015-03-21T08:46:44.316Z",
 "endDate":"2015-03-21T08:46:44.316Z",
 "placed":"55e707e0b1a8731c237a463d",
-/*"typeOfShift":"dayShift",*/
+"typeOfShift":"dayShift",
 "typeOfWork":"fullTime",
 "status":"completed",
 "mob":1234567892,
@@ -52,7 +52,7 @@ Order.find({}).remove(function() {
 {"availebleDay":["tuesday","wedesday","thursday"],
 "startDate":"2015-03-21T08:46:44.316Z",
 "endDate":"2015-03-21T08:46:44.316Z",
-/*"typeOfShift":"dayShift",*/
+"typeOfShift":"dayShift",
 "typeOfWork":"fullTime",
 "status":"pending",
 "mob":1234567892,
@@ -67,7 +67,7 @@ Order.find({}).remove(function() {
 {"availebleDay":["tuesday","wedesday","thursday"],
 "startDate":"2015-03-21T08:46:44.316Z",
 "endDate":"2015-03-21T08:46:44.316Z",
-/*"typeOfShift":"dayShift",*/
+"typeOfShift":"dayShift",
 "typeOfWork":"fullTime",
 "status":"pending",
 "mob":1234567892,
@@ -79,7 +79,7 @@ Order.find({}).remove(function() {
 "location":{"lat":19.0446205965,"lng":73.10506,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
 }
 );
-});
+//});
 
 User.find({}).remove(function() {        
   User.create({
