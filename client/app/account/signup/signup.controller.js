@@ -66,7 +66,7 @@ angular.module('workerManagementSystemApp')
           location : locat,/*
           status : $scope.user.status,
           gender : $scope.user.gender,*/
-          role : $scope.user.role/*,
+         /* role : $scope.user.role/*,
           skills : $scope.user.skills*/
         })
         .then( function() {
