@@ -1,8 +1,12 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <button type="button" class="btn btn-success btn-primary btn-lg btn-block" ng-click="addUser('lg')"><span class="glyphicon glyphicon-user">   Create New User</span></button>
+  <div class="col-sm-6 left-Btn">
+    <button type="button" class="btn btn-success btn-primary btn-lg btn-block" ng-click="addUser('lg')"><span class="glyphicon glyphicon-user">   Create New User</span></button>
+  </div>
+  <div class="col-sm-6 right-Btn">
     <button type="button" class="btn btn-success btn-primary btn-lg btn-block" ng-click="addAdmin('lg')"><span class="glyphicon glyphicon-user">   Create New Admin</span></button>
+  </div>
   <hr />
 	<label>admin map</label>
   <div id="adminmap" class="col-sm-12" style="height: 400px;"></div>
@@ -12,21 +16,7 @@
   <hr />
 	<label>Orders map</label>
 	<div id="ordermap" class="col-sm-12" style="height: 400px;">  </div>
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users" ng-if="user.role=='admin' || user.role=='employer' || user.role=='worker'">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.mobile}}</span>
-       <!--  <a ng-click="delete(user)" class="trash">
-          <span class="glyphicon glyphicon-trash pull-right"></span>
-        </a>
-        <a ng-click="edit(user)" class="trash">
-          <span class="glyphicon glyphicon-edit "></span>
-        </a> -->
-        <a ng-click="edit(user)" class="pull-right operation_Icons"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-        <a  ng-click="delete(user)"  class="pull-right operation_Icons"><i class="glyphicon glyphicon-trash"></i> Delete &nbsp;</a>
-    </li>
-  </ul>
+<hr />
 
   <!-- <div class="container">
   <div class="row">
@@ -48,5 +38,17 @@
     </p>
   </form>
 </div> -->
-
+<style>
+   @media screen and (min-width: 770px) {
+    .left-Btn{
+      padding-left:0px;
+    }
+    .right-Btn{
+      padding-right:0px;
+    }
+   }
+   .right-Btn,.left-Btn{
+      margin-bottom: 10px;
+   }
+</style>
 </div>

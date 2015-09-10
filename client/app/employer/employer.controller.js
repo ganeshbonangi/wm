@@ -181,6 +181,9 @@ $http.post('/api/orders', {
             },
             dataObject: function () {
               return order;
+            },
+            type: function(){
+              return "order";
             }
           }
         });

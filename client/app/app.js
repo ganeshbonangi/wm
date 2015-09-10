@@ -9,7 +9,11 @@ angular.module('workerManagementSystemApp', [
   'btford.socket-io',
   'ui.bootstrap',
   'ngAnimate'
-])
+]).controller('wmCtrl', function($scope){
+     $scope.$on('updateCollection', function($event, data){
+       console.log(data);
+     });
+})
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({

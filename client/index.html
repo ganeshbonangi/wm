@@ -14,6 +14,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -26,7 +27,6 @@
       <link rel="stylesheet" href="app/employer/employer.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/superadmin/superadmin.css">
-      <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -36,8 +36,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-view=""></div>
-
+    <div ng-controller="wmCtrl">
+      <div ng-view=""></div>
+    </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!--script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -75,7 +76,6 @@
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
-          <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
           <script src="app/developer.js"></script>
@@ -85,13 +85,10 @@
           <script src="app/main/main.js"></script>
           <script src="app/superadmin/superadmin.controller.js"></script>
           <script src="app/superadmin/superadmin.js"></script>
-          <script src="components/addeditadmin/addeditadmincontroller.js"></script>
-          <script src="components/addedituser/addeditusercontroller.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/maps/location.service.js"></script>
           <script src="components/maps/pinlocation/pinlocation.js"></script>
-          <script src="components/modal/modal.service.js"></script>
           <script src="components/modal/modalCtrl.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>

@@ -52,7 +52,6 @@ angular.module('workerManagementSystemApp')
 	          b[3] = order.name;
 	          b[4] = order.status;
 	          markup.push(b);
-	          console.log(options);
 	      }
       	return markup;
       };

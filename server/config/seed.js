@@ -79,9 +79,7 @@ Thing.find({}).remove(function() {
 "location":{"lat":19.0446205965,"lng":73.10506,"address":"Road Number 20, Sector AWC, Kalamboli, Panvel, Navi Mumbai, Maharashtra 410218, India"}
 }
 );
-//});
-
-User.find({}).remove(function() {        
+//});      
   User.create({
     provider: 'local',
     role: 'worker',
@@ -136,4 +134,3 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-}); 

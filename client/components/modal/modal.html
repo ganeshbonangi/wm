@@ -3,8 +3,11 @@
         <span class="modal-title huge">{{title}}</span>
         <button class="pull-right close" ng-click="cancel()">&times;</button>
     </div>
-    <div class="modal-body">
-        <orderform order='dataObject'> </orderform>
+    <div class="modal-body" ng-if="type=='order'">
+        <orderform order='dataObject' is-modal="true"> </orderform>
+    </div>
+    <div class="modal-body" ng-if="type.name=='user'">
+        <user-creation role="type.role" is-modal="true" user="dataObject"> </user-creation>
     </div>
     <!-- <div class="modal-footer">
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button> 
@@ -17,13 +20,19 @@
     .modal-dialog{
         width: 70%;
     }
-    .modal-body-c{
-        height: 390px;
-        overflow: auto;
-        padding: 15px;
+    .modal-body{
+        padding: 0px;
     }
-    .btncontainer{
-
+    .modal-dialog{
+        margin: auto;
+    }
+    .modal-dialog .container{
+        width: 100%;
+    }
+    @media screen and (max-width: 600px) {
+        .modal-dialog{
+            width: 90% !important;
+        }
     }
     </style>
 </div>

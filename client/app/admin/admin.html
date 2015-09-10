@@ -8,21 +8,7 @@
   <hr />
 	<label>Orders map</label>
 	<div id="ordermap" class="col-sm-12" style="height: 400px;">  </div>
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users" ng-if="user.role=='employer' || user.role=='worker'">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.mobile}}</span>
-       <!--  <a ng-click="delete(user)" class="trash">
-          <span class="glyphicon glyphicon-trash pull-right"></span>
-        </a>
-        <a ng-click="edit(user)" class="trash">
-          <span class="glyphicon glyphicon-edit "></span>
-        </a> -->
-        <a ng-click="edit(user)" class="pull-right operation_Icons"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-        <a  ng-click="delete(user)"  class="pull-right operation_Icons"><i class="glyphicon glyphicon-trash"></i> Delete &nbsp;</a>
-    </li>
-  </ul>
+<hr />
 
   <!-- <div class="container">
   <div class="row">

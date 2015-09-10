@@ -1,4 +1,6 @@
-<form action="" name="employerForm" ng-show="!placedSuccess" novalidate >
+<div class="container">
+    <div class="col-sm-12">
+  <form action="" name="employerForm" ng-show="!placedSuccess" novalidate >
 <div class="modal-body-c">
   <div class="row form-group" ng-class="{ 'has-success': employerForm.empCount.$valid && submitted,
                                             'has-error': employerForm.empCount.$invalid && submitted }">
@@ -46,7 +48,7 @@
     </div>
     <div class="col-xs-12">
         <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
-        <select multiple class="form-control" name="workingDays" id="sel2" ng-model="order.availebleDay"  required>
+     <!--    <select multiple class="form-control" name="workingDays" id="sel2" ng-model="order.availebleDay"  required>
           <option value="monday">Monday</option>
           <option value="tuesday">Tuesday</option>
           <option value="wedesday">Wedesday</option>
@@ -54,7 +56,12 @@
           <option value="friday">Friday</option>       
           <option value="saturday">Saturday</option>
           <option value="sunday">Sunday</option>
-        </select>
+        </select> -->
+        <div class="btn-toolbar">
+          <div class="btn-group" ng-repeat="day in week">
+            <a class="btn btn-default" ng-class="{'active':isInAvailableDays(day)}" ng-click="toggleAvailebility($event,$index)">{{day}}</a>
+          </div>
+      </div>
       </div>      
     </div>
 
@@ -156,3 +163,5 @@
       <a class="btn btn-success" ng-click="cancel()">Cancle</a>
     </div>
 </form>
+</div>
+</div>

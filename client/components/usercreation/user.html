@@ -1,15 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>{{heading}}</h1>
-    </div>
     <div class="col-sm-12">
 
-<div class="form-group" ng-class="{ 'has-success': form.role.$valid && submitted,
+<div class="form-group" ng-show="visablejson.role" ng-class="{ 'has-success': form.role.$valid && submitted,
                                             'has-error': form.role.$invalid && submitted }">
     <label>Sinup as a</label>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-xs-6">
             <label class="form-control">
                 <input type="radio"  name="role" value="worker" 
                         ng-model="user.role" 
@@ -18,7 +14,7 @@
                 Worker
             </label>
         </div>
-        <div class="col-lg-6">
+        <div class="col-xs-6">
             <label class="form-control">
                 <input type="radio" name="role" value="employer"
                        ng-model="user.role" 
@@ -73,8 +69,8 @@
           </p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
-                                            'has-error': form.password.$invalid && submitted }">
+        <div class="form-group"  ng-hide="update" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }" >
           <label>Password</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.password"
@@ -120,7 +116,7 @@
                                               'has-error': form.status.$invalid && submitted }">
           <label>Status acitve or nonactive?</label>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-xs-6">
               <label class="form-control">
                   <input type="radio"  name="status" value="active" 
                           ng-model="user.status" 
@@ -128,7 +124,7 @@
                   Active
               </label>
           </div>
-          <div class="col-lg-6">
+          <div class="col-xs-6">
               <label class="form-control">
                   <input type="radio" name="status" value="nonactive"
                          ng-model="user.status" 
@@ -147,7 +143,7 @@
                                             'has-error': form.gender.$invalid && submitted }">
           <label>Gender</label>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-xs-6">
                 <label class="form-control">
                     <input type="radio"  name="gender" value="male" 
                             ng-model="user.gender" 
@@ -155,7 +151,7 @@
                     Male
                 </label>
             </div>
-            <div class="col-lg-6">
+            <div class="col-xs-6">
                 <label class="form-control">
                     <input type="radio" name="gender" value="female"
                            ng-model="user.gender" 
@@ -169,11 +165,17 @@
           </div>
         </div>
         <div>
-            <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            <button class="btn btn-inverse btn-lg btn-login" type="submit" ng-hide="update">
               Sign up
             </button>
-            <a class="btn btn-default btn-lg btn-register" href="/login">
+            <a class="btn btn-default btn-lg btn-login" ng-show="update" ng-click="updateUser()">
+              update
+            </a>
+            <a class="btn btn-default btn-lg btn-register" ng-hide="isModal" href="/login">
               Login
+            </a>
+            <a class="btn btn-default btn-lg btn-register" ng-show="isModal" ng-click="$parent.cancel()">
+              Cancle
             </a>
         </div>
 <!--           <div>
@@ -189,6 +191,4 @@
         </div> -->
     </form>
     </div>
-  </div>
-  <hr>
 </div>

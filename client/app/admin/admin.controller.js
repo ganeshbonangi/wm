@@ -100,33 +100,53 @@ angular.module('workerManagementSystemApp')
 
 
     $scope.addUser = function(size) {
-     var modalInstance = $modal.open({
-          templateUrl: 'components/addedituser/addedituser.html',
-          controller: 'AddEditUserCtrl',
-          size: size,
+          var modalInstance = $modal.open({
+          animation: true,
+          templateUrl: 'components/modal/modal.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'lr',/*'sm'*/
           resolve: {
-            user: null
+            title: function(){
+              return "Sing up";
+            },
+            dataObject: function () {
+              return null;
+            },
+            type: function(){
+              return {name:"user"};
+            }
           }
         });
-        modalInstance.result.then(function ( ) {
-            $scope.users = User.query();//$scope.users.push(newUser);
+
+        modalInstance.result.then(function (selectedItem) {
+          //$scope.selected = selectedItem;
         }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
+          //$log.info('Modal dismissed at: ' + new Date());
         });
     };
     $scope.edit= function(user) { 
-     var modalInstance = $modal.open({
-          templateUrl: 'components/addedituser/addedituser.html',
-          controller: 'AddEditUserCtrl',
-          size: 'lr',
+        var modalInstance = $modal.open({
+          animation: true,
+          templateUrl: 'components/modal/modal.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'lr',/*'sm'*/
           resolve: {
-            user: function(){ return user;}//return should be there
+            title: function(){
+              return "Sing up";
+            },
+            dataObject: function () {
+              return user;
+            },
+            type: function(){
+              return {name:"user",role:user.role};
+            }
           }
         });
-        modalInstance.result.then(function ( ) {
-            $scope.users = User.query();//$scope.users.push(newUser);
+
+        modalInstance.result.then(function (selectedItem) {
+          //$scope.selected = selectedItem;
         }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
+          //$log.info('Modal dismissed at: ' + new Date());
         });
     };
 

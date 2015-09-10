@@ -63,12 +63,15 @@ angular.module('workerManagementSystemApp')
        * @param  {Function} callback - optional
        * @return {Promise}
        */
-      createUser: function(user, callback) {
+      createUser: function(user, isModal, callback) {
         var cb = callback || angular.noop;
         return User.save(user,
           function(data) {
-            $cookieStore.put('token', data.token);
-            currentUser = User.get();
+            if(!isModal){
+              $cookieStore.put('token', data.token);
+              currentUser = User.get();
+            }
+            console.log(data);
             return cb(user);
           },
           function(err) {

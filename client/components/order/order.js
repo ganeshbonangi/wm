@@ -9,10 +9,12 @@ angular.module('workerManagementSystemApp')
 		// terminal: true,
 		 scope: {
       order:'=?',
-      saveForm: '=?'
+      isModal:'=?',
+      saveForm:'=?'
      }, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
-$scope.today = function() {
+  $scope.week = ["Sunday","Monday","Tuesday","Wedesday","Thursday","Friday","Saturday"];
+  $scope.today = function() {
     $scope.order.startDate = new Date(new Date());
     $scope.today = new Date();
     $scope.order.endDate = new Date();
@@ -32,7 +34,24 @@ $scope.today = function() {
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
   };
+  $scope.toggleAvailebility = function($event,index){
+  var isActive = angular.element($event.currentTarget).hasClass("active");
+  if(isActive){
+    for(var i=0;i<$scope.order.availebleDay.length;i++){
+      if($scope.order.availebleDay[i]==$scope.week[index])
+        $scope.order.availebleDay.splice(i,1);
+    }
+  }else{
+    $scope.order.availebleDay.push($scope.week[index]);
+  }
+  };
 
+  $scope.isInAvailableDays = function(day){
+    for(var i=0;i<$scope.order.availebleDay.length;i++){
+      if($scope.order.availebleDay[i]==day) return true;
+    }
+    return false;
+  }
   $scope.open = function($event,popup) {
 
 
@@ -72,7 +91,7 @@ $scope.today = function() {
   $scope.placeNewOrder = function(){
     $scope.order.desc='';
     $scope.order.empCount=undefined;
-    $scope.placedSuccess = false;
+    $scope.$parent.placedSuccess = false;
   };
 
     $scope.order.location = locat;
@@ -99,7 +118,7 @@ $http.post('/api/orders', {
     $http.get('/api/orders').success(function(awesomeOrders) {
   /*    $scope.awesomeOrders = awesomeOrders;
       socket.syncUpdates('order', $scope.awesomeOrders);*/
-      $scope.placedSuccess = true;
+      $scope.$parent.$parent.placedSuccess = true;
     });
 /*
     $scope.addOrder = function() {
@@ -118,8 +137,6 @@ $http.post('/api/orders', {
       socket.unsyncUpdates('order');
     });
 */
-
-
     //console.log($scope.order);
   }
   $scope.updateOrder = function(){
@@ -151,19 +168,6 @@ $http.post('/api/orders', {
   $scope.cancel = function(){
     $scope.$parent.cancel();
   }
-  $scope.$watch('selected', function(nowSelected){
-      $scope.order.availebleDay = [];
-      
-      if( ! nowSelected ){
-          // here we've initialized selected already
-          // but sometimes that's not the case
-          // then we get null or undefined
-          return;
-      }
-      angular.forEach(nowSelected, function(val){
-          $scope.order.availebleDay.push( val() );
-      });
-  });
 
   $scope.init = function(){
     $scope.order = {};
@@ -172,8 +176,9 @@ $http.post('/api/orders', {
     $scope.toggleMin();
     $scope.format = 'dd-MMMM-yyyy';
     $scope.mytime = new Date();
-    $scope.hstep = 1;
-    $scope.mstep = 15;
+    $scope.order.typeOfShift = 'dayShift';
+    $scope.order.typeOfWork = 'fullTime';
+  };
 
     $scope.dateOptions = {
       formatYear: 'yy',
@@ -184,17 +189,14 @@ $http.post('/api/orders', {
       hstep: [1, 2, 3],
       mstep: [1, 5, 10, 15, 25, 30]
     };
-
-    $scope.isStartMeridian = true;
-    $scope.isEndMeridian = true;
-    $scope.order.typeOfShift = 'dayShift';
-    $scope.order.typeOfWork = 'fullTime';
-    $scope.user = Auth.getCurrentUser();
-    $scope.order.mob = $scope.user.mobile;
-
-  };
   if(!$scope.order)
     $scope.init();
+    $scope.hstep = 1;
+    $scope.mstep = 15;
+    $scope.isStartMeridian = true;
+    $scope.isEndMeridian = true;
+    $scope.user = Auth.getCurrentUser();
+    $scope.order.mob = $scope.user.mobile;
 		 },
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment

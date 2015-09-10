@@ -124,62 +124,75 @@ angular.module('workerManagementSystemApp')
         })(marker, i));
       }
     };
-
-
     $scope.addUser = function(size) {
-     var modalInstance = $modal.open({
-          templateUrl: 'components/addedituser/addedituser.html',
-          controller: 'AddEditUserCtrl',
-          size: size,
+          var modalInstance = $modal.open({
+          animation: true,
+          templateUrl: 'components/modal/modal.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'lr',/*'sm'*/
           resolve: {
-            user: null
+            title: function(){
+              return "Sing up";
+            },
+            dataObject: function () {
+              return null;
+            },
+            type: function(){
+              return {name:"user"};
+            }
           }
         });
-        modalInstance.result.then(function ( ) {
-            $scope.users = User.query();//$scope.users.push(newUser);
+
+        modalInstance.result.then(function (selectedItem) {
+          //$scope.selected = selectedItem;
         }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
+          //$log.info('Modal dismissed at: ' + new Date());
         });
     };
     $scope.edit= function(user) { 
-      var templateUrl, controller;
-      if(user.role === "employer" || user.role === "worker"){
-        templateUrl = "components/addedituser/addedituser.html";
-        controller = "AddEditUserCtrl";
-      }else if(user.role === "admin"){
-        templateUrl = "components/addeditadmin/addeditadmin.html";
-        controller = "AddEditAdminCtrl";
-      }
-
-     var modalInstance = $modal.open({
-          templateUrl: templateUrl,
-          controller: controller,
-          size: 'lr',
+        var modalInstance = $modal.open({
+          animation: true,
+          templateUrl: 'components/modal/modal.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'lr',/*'sm'*/
           resolve: {
-            user: function(){ return user;}//return should be there
+            title: function(){
+              return "Sing up";
+            },
+            dataObject: function () {
+              return user;
+            },
+            type: function(){
+              return {name:"user",role:user.role};
+            }
           }
         });
-        modalInstance.result.then(function ( ) {
-            $scope.users = User.query();//$scope.users.push(newUser);
+
+        modalInstance.result.then(function (selectedItem) {
+          //$scope.selected = selectedItem;
         }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
+          //$log.info('Modal dismissed at: ' + new Date());
         });
     };
 
     $scope.addAdmin = function(size) {
-     var modalInstance = $modal.open({
-          templateUrl: 'components/addeditadmin/addeditadmin.html',
-          controller: 'AddEditAdminCtrl',
-          size: size,
+          var modalInstance = $modal.open({
+          animation: true,
+          templateUrl: 'components/modal/modal.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'lr',/*'sm'*/
           resolve: {
-            user: null
+            title: function(){
+              return "Sing up";
+            },
+            dataObject: function () {
+              return null;
+            },
+            type: function(){
+              return {name:"user",role:"admin"};
+            }
           }
         });
-       /* modalInstance.result.then(function ( ) {
-            $scope.users = User.query();//$scope.users.push(newUser);
-        }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
-        });*/
     };
 
     $scope.awesomeOrders = [];
