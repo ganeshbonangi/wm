@@ -2,6 +2,7 @@
 
 var devloperVersion = false;
 angular.module('workerManagementSystemApp', [
+  'uiGmapgoogle-maps',
   'ngCookies',
   'ngResource',
   'ngSanitize',

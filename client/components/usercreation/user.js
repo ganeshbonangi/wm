@@ -13,6 +13,38 @@ angular.module('workerManagementSystemApp')
       user:'=?'
      }, 
      controller: function($scope, $element, $attrs, $transclude) {
+      $scope.marker = {
+        id: 0,
+          coords: {
+          },
+        options: { draggable: true },
+        events: {
+          dragend: function (marker, eventName, args) {
+            var lat = marker.getPosition().lat();
+            var lon = marker.getPosition().lng();
+            $scope.marker.options = {
+              draggable: true,
+              labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+              labelAnchor: "100 0",
+              labelClass: "marker-labels"
+            };
+          }
+        }
+      };
+      $scope.options = {scrollwheel: false};
+      if($scope.user && $scope.user.location){
+          $scope.map = {center: {latitude: parseFloat($scope.user.location.lat), longitude: parseFloat($scope.user.location.lng)}, zoom: 14 };
+          $scope.marker.coords = {latitude: parseFloat($scope.user.location.lat), longitude: parseFloat($scope.user.location.lng)};
+      } else if($window.navigator.geolocation) {
+            $window.navigator.geolocation.getCurrentPosition(function(position) {
+              $scope.$apply(function(){
+                $scope.map = {center: {latitude: position.coords.latitude, longitude: position.coords.longitude}, zoom: 14 };
+                $scope.marker.coords = {latitude: position.coords.latitude, longitude: position.coords.longitude};
+              });
+            });
+      } else {
+         alert('Geolocation is not supported by this browser.');
+      }
       $scope.init = function() {
         if(!$scope.user){
           $scope.user = {};
@@ -35,9 +67,9 @@ angular.module('workerManagementSystemApp')
         $scope.submitted = true;
         var userObject = {};
         var locat={
-                    'lat' : locationSer.lat,
-                    'lng' : locationSer.lng,
-                    'address' : locationSer.address
+                    'lat' : $scope.marker.coords.latitude,
+                    'lng' : $scope.marker.coords.longitude,
+                    'address' : $scope.marker.coords.address
                   };
         if(form.$valid) {
           userObject = {
@@ -93,10 +125,10 @@ angular.module('workerManagementSystemApp')
       }
       $scope.updateUser = function(user){                                                      
         var locat={
-                      lat : locationSer.lat,
-                      lng : locationSer.lng,
-                      address : locationSer.address
-                    };
+                    'lat' : $scope.marker.coords.latitude,
+                    'lng' : $scope.marker.coords.longitude,
+                    'address' : $scope.marker.coords.address
+                  };
          $scope.user.location = locat;
          Auth.updateUser( $scope.user );
          $scope.$parent.$broadcast('editUpdate',$scope.user);
