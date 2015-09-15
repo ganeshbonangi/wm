@@ -42,3 +42,16 @@
 .operation_Icons{
     cursor: pointer;
 }
+
+.angular-google-map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.map_canvas{
+    height: 400px;
+    width: 100%;
+    position: relative;
+}
