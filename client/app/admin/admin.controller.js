@@ -107,7 +107,7 @@ angular.module('workerManagementSystemApp')
           size: 'lr',/*'sm'*/
           resolve: {
             title: function(){
-              return "Sing up";
+              return "User creation";
             },
             dataObject: function () {
               return null;

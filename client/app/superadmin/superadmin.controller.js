@@ -132,7 +132,7 @@ angular.module('workerManagementSystemApp')
           size: 'lr',/*'sm'*/
           resolve: {
             title: function(){
-              return "Sing up";
+              return "User creation";
             },
             dataObject: function () {
               return null;
@@ -157,7 +157,7 @@ angular.module('workerManagementSystemApp')
           size: 'lr',/*'sm'*/
           resolve: {
             title: function(){
-              return "Sing up";
+              return "Adimin creation";
             },
             dataObject: function () {
               return user;
