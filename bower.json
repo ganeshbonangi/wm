@@ -15,7 +15,6 @@
     "angular-bootstrap": "~0.13.*",
     "font-awesome": ">=4.1.0",
     "lodash": ">=2.4.1",
-    "angular-google-maps":">=2.0.X",
     "angular-socket-io": "~0.6.0"
   },
   "devDependencies": {
