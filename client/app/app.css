@@ -58,3 +58,9 @@
 .form-group,.navbar{
     margin-bottom: 5px;
 }
+.huge{
+    font-size: 2em;
+}
+body{
+    padding-bottom: 10px;
+}
