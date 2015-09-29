@@ -55,3 +55,6 @@
     width: 100%;
     position: relative;
 }
+.form-group,.navbar{
+    margin-bottom: 5px;
+}

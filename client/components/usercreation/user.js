@@ -35,9 +35,9 @@ angular.module('workerManagementSystemApp')
         $scope.submitted = true;
         var userObject = {};
         var locat={
-                    'lat' : $scope.marker.coords.latitude,
-                    'lng' : $scope.marker.coords.longitude,
-                    'address' : $scope.marker.coords.address
+                    'lat' : locationSer.lat,
+                    'lng' : locationSer.lng,
+                    'address' : locationSer.address
                   };
         if(form.$valid) {
           userObject = {
@@ -149,7 +149,7 @@ angular.module('workerManagementSystemApp')
     // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
     // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
     // template: '',
-     templateUrl: 'components/userCreation/user.html',
+     templateUrl: '/components/userCreation/user.html',
      replace: true,
     // transclude: true,
     // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),

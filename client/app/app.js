@@ -26,7 +26,7 @@ angular.module('workerManagementSystemApp', [
       //$scope.count++;
       
       angular.forEach($scope.users, function(u, i) {
-         if (u.mobile == user.mobile) {
+         if (u.mobile === user.mobile) {
            $scope.users[i]=user;
          }
        });
@@ -54,8 +54,7 @@ angular.module('workerManagementSystemApp', [
         socket.syncUpdates('order', $scope.awesomeOrders);
         $scope.initOrder($scope.awesomeOrders);
       });
-
-    }
+    };
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('order');
     });
@@ -157,7 +156,7 @@ angular.module('workerManagementSystemApp', [
     $scope.addUser = function(size) {
           var modalInstance = $modal.open({
           animation: true,
-          templateUrl: 'components/modal/modal.html',
+          templateUrl: '/components/modal/modal.html',
           controller: 'ModalInstanceCtrl',
           size: 'lr',/*'sm'*/
           resolve: {
@@ -182,7 +181,7 @@ angular.module('workerManagementSystemApp', [
     $scope.edit= function(user) { 
         var modalInstance = $modal.open({
           animation: true,
-          templateUrl: 'components/modal/modal.html',
+          templateUrl: '/components/modal/modal.html',
           controller: 'ModalInstanceCtrl',
           size: 'lr',/*'sm'*/
           resolve: {
@@ -208,7 +207,7 @@ angular.module('workerManagementSystemApp', [
     $scope.addAdmin = function(size) {
           var modalInstance = $modal.open({
           animation: true,
-          templateUrl: 'components/modal/modal.html',
+          templateUrl: '/components/modal/modal.html',
           controller: 'ModalInstanceCtrl',
           size: 'lr',/*'sm'*/
           resolve: {

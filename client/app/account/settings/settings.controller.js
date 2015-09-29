@@ -41,7 +41,7 @@ angular.module('workerManagementSystemApp')
       $scope.user = User.get();
     };
     $scope.openPanel = function(name){
-      if( $scope.opened != name){
+      if( $scope.opened !== name){
         $scope.cancel($scope.opened);
         $scope.opened = name;
         $scope[name] = true;
