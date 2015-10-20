@@ -53,21 +53,32 @@
           <option value="sunday">Sunday</option>
         </select> -->
         <div class="btn-toolbar">
-          <div class="btn-group" ng-repeat="day in week">
+          <div class="pagination" ng-repeat="day in week">
             <a class="btn btn-default" ng-class="{'active':isInAvailableDays(day)}" ng-click="toggleAvailebility($event,$index)">{{day}}</a>
           </div>
       </div>
       </div>      
     </div>
 
-<label>Start Date</label>
+
      <div class="row form-group" ng-class="{ 'has-success': employerForm.empStartDate.$valid && submitted,
                                             'has-error': employerForm.empStartDate.$invalid && submitted }">
-        <div class="col-xs-12">
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+          <label>Start Date</label>
             <p class="input-group">
               <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.startDate" is-open="startDateOpen" name="empStartDate" datepicker-options="dateOptions"  min="{{today}}" required />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event,'start')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">   
+          <label>End Date</label>
+            <p class="input-group" ng-model="format">
+              <input type="text" class="form-control" name="empEndDate" datepicker-popup="{{format}}" ng-model="order.endDate" is-open="endDateOpen"  datepicker-options="dateOptions"  required />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event,'end')"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
         </div>
@@ -78,38 +89,29 @@
      </div>
 
 
-    <label>End Date</label>
-     <div class="row form-group" ng-class="{ 'has-success': employerForm.empEndDate.$valid && submitted,
+<!--      <div class="row form-group" ng-class="{ 'has-success': employerForm.empEndDate.$valid && submitted,
                                             'has-error': employerForm.empEndDate.$invalid && submitted }">
- 
-        <div class="col-xs-12">
-            <p class="input-group" ng-model="format">
-              <input type="text" class="form-control" name="empEndDate" datepicker-popup="{{format}}" ng-model="order.endDate" is-open="endDateOpen"  datepicker-options="dateOptions"  required />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event,'end')"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-        </div>
-    </div>
+
+    </div> -->
 
 
   <div class="row">  
-    <div class="col-xs-12">
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
           <label>Start time:</label>
+          <timepicker ng-model="order.startTime" hour-step="hstep" minute-step="mstep" show-meridian="isStartMeridian"></timepicker>
     </div>
-    <div class="col-xs-12">
-         <timepicker ng-model="order.startTime" hour-step="hstep" minute-step="mstep" show-meridian="isStartMeridian"></timepicker>
-    </div>
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+          <label>End time:</label>
+         <timepicker ng-model="order.endTime" hour-step="hstep" minute-step="mstep" show-meridian="isEndMeridian"></timepicker>
+    </div>   
+ <!--    <div class="col-xs-12"> -->
+<!--     </div> -->
   </div>  
 
-  <div class="row">
+<!--   <div class="row">
     <div class="col-xs-12">
-          <label>End time:</label>
-    </div>   
-    <div class="col-xs-12">
-         <timepicker ng-model="order.endTime" hour-step="hstep" minute-step="mstep" show-meridian="isEndMeridian"></timepicker>
     </div>
-  </div>  
+  </div>  --> 
 
   <div class="row">
     <div class="col-xs-12">
