@@ -29,7 +29,7 @@ angular.module('workerManagementSystemApp')
       image:"assets/images/plumber.jpg",
       text:"Plumbing work"
     },{
-      image: "assets/images/nursing-home-photo.jpg",
+      image: "assets/images/Nursing-home-photo.jpg",
       text:"Health care"
     },{
       image:"assets/images/local-electrician-huntington-beach-area.jpg",

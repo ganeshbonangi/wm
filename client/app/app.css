@@ -64,3 +64,33 @@
 body{
     padding-bottom: 10px;
 }
+.form-control{
+    height: 26px;
+    padding: 2px 8px;
+}
+.btn{
+    padding: 2px 8px;
+}
+.form-head{
+    font-size: 2em;
+}
+label{
+    font-weight: normal;
+}
+.col-lg-custom{
+    display: inline-block;
+    float: left;
+    padding-left: 15px;
+}
+.col-lg-6-custom{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom: 5px;
+}
+.pagination{
+    margin: 0 0 4px 0;
+    padding-left: 15px;
+}
+.pagination li a{
+    padding: 2px;
+}
