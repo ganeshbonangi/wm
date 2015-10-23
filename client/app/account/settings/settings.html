@@ -176,7 +176,7 @@
           <a class="col-xs-3 glyphicon glyphicon-pencil">Edit</a>
       </div>
       <div ng-show="true"><!-- editLocation -->
-        <div pinlocation lat={{user.location.lat}} lng={{user.location.lng}} status={{user.status}}></div>
+        <div pinlocation lat='user.location.lat' lng='user.location.lng' status='user.status'></div>
         <button class="btn btn-default" type="submit">Save changes</button>
         <button class="btn btn-default" ng-click="cancel('editLocation')">Cancel</button>
       </div>

@@ -28,9 +28,6 @@ angular.module('workerManagementSystemApp')
         $scope.keyup = true;     
       };
       $scope.heading = $attrs.heading;
-      $scope.statusChange = function(){
-        //$scope.$apply();
-      }
       $scope.register = function(form, from) {
         $scope.submitted = true;
         var userObject = {};

@@ -99,8 +99,9 @@ angular.module('workerManagementSystemApp')
       //if(form.$valid) {
         Auth.changeLocation(locat)
         .then( function() {
+          $scope.user.location = locat;
           $scope.cancel($scope.opened);
-          $scope.message = 'Password successfully changed.';
+          $scope.message = 'Location successfully changed.';
         })
         .catch( function() {
           form.password.$setValidity('mongoose', false);
