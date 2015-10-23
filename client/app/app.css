@@ -94,3 +94,9 @@ label{
 .pagination li a{
     padding: 2px;
 }
+.nonvisable{
+    display: none;
+}
+.input-group-addon{
+    padding: 2px;
+}

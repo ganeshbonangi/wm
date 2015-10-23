@@ -4,7 +4,7 @@
 // =================================
 module.exports = {
   // Server IP
-  seedDB: true,
+  seedDB: false,
   
   ip:       process.env.OPENSHIFT_NODEJS_IP ||
             process.env.IP ||
