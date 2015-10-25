@@ -1,19 +1,19 @@
  ✔ Implementing the super admin @done (15-08-15 20:20)
    ✔ process: copieing admin and adding creating admin and admin map @done (15-08-15 20:20)
- ☐ back button with different roles bug
  ✔ have to introduce order status @done (15-08-28 15:54)
  ✔ have to make main view @done (15-09-07 00:28)
- ☐ data types of diff fields
  ✔ have to make a component for multi select dropdown for getting and setting data @done (15-09-07 21:14)
+ ✔ making directive for user sing up form @done (15-09-08 21:49)
+ ✔ should prevent auto login while user a/c creating by admin or super admin @done (15-09-08 21:49)
+ ✔ location changing while swithing status from active or nonactive in user creation @done (15-10-23 16:14)
  ☐ have to make social media page and should link with main view
  ☐ Auto sync with api requiests
  ☐ optimizing map components
- ✔ making directive for user sing up form @done (15-09-08 21:49)
- ✔ should prevent auto login while user a/c creating by admin or super admin @done (15-09-08 21:49)
+ ☐ data types of diff fields
  ☐ sync map update bug in order
+ ☐ back button with different roles bug
  ☐ have to introduce map in angula context
  ☐ have to make asigning order to admin 
  ☐ admin can asign workers to order
  ☐ have to make social media login
- ☐ location changing while swithing status from active or nonactive in user creation
  ☐ new order with empty form
