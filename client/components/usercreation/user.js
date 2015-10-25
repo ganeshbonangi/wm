@@ -138,6 +138,13 @@ angular.module('workerManagementSystemApp')
         }
       };
 
+      $scope.statusChange = function(){
+   
+        $scope.user.lat = locationSer.lat;
+        $scope.user.lng = locationSer.lng;
+        $scope.user.address = locationSer.address;
+
+      }
       $scope.loginOauth = function(provider) {
         $window.location.href = '/auth/' + provider;
       };

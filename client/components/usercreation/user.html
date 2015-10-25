@@ -90,7 +90,7 @@
             {{ errors.password }}
           </p>
         </div>
-        <div pinlocation status='user.status' ></div> 
+        <div pinlocation status='user.status' lng='user.lng' lat='user.lat' ></div> 
 
 
 
@@ -120,6 +120,7 @@
               <label class="form-control">
                   <input type="radio"  name="status" value="active" 
                           ng-model="user.status" 
+                          ng-change="statusChange()"
                           required />
                   Active
               </label>
@@ -128,6 +129,7 @@
               <label class="form-control">
                   <input type="radio" name="status" value="nonactive"
                          ng-model="user.status" 
+                         ng-change="statusChange()"
                          required />
                   Nonactive
               </label>
