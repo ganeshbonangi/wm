@@ -6,8 +6,9 @@
  ✔ making directive for user sing up form @done (15-09-08 21:49)
  ✔ should prevent auto login while user a/c creating by admin or super admin @done (15-09-08 21:49)
  ✔ location changing while swithing status from active or nonactive in user creation @done (15-10-23 16:14)
+ ✔ have to make login fields in main and have to deploy @done (15-11-05 16:28)
+ ✔ scrollwheel: false @done (15-11-05 16:28)
  ☐ have to make social media page and should link with main view
- ☐ Auto sync with api requiests
  ☐ optimizing map components
  ☐ data types of diff fields
  ☐ sync map update bug in order
@@ -17,3 +18,11 @@
  ☐ admin can asign workers to order
  ☐ have to make social media login
  ☐ new order with empty form
+
+ have to register workers
+ roles for crediantials
+ home page
+
+ domastric indastrial
+ contact  
+ prevent maintance, house keeping,

@@ -22,6 +22,8 @@ angular.module('workerManagementSystemApp')
             $scope.user.role = 'worker';
         }else{
           $scope.update = true;
+          $scope.user.lat = $scope.user.location.lat;
+          $scope.user.lng = $scope.user.location.lng;
         }
         $scope.roleChanged();
         $scope.errors = {}; 

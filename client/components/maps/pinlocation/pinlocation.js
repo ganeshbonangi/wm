@@ -33,7 +33,8 @@ angular.module('workerManagementSystemApp')
           var mapOptions = {
               zoom: 16,
               center: new google.maps.LatLng($scope.markers.lat, $scope.markers.lng),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              scrollwheel: false
           };
           var latlngbounds = new google.maps.LatLngBounds();
           var geocoder = geocoder = new google.maps.Geocoder();

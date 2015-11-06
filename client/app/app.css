@@ -100,3 +100,19 @@ label{
 .input-group-addon{
     padding: 2px;
 }
+.navbar-top-container{
+    margin-bottom: 55px;
+}
+.navbar-nav >li > a,.navbar-header > a,.navbar-nav >li > p{
+    padding: 5px !important;
+    margin: 3px 0px 0px 0px;
+}
+.navbar-brand{
+    height: 35px;
+}
+.navbar{
+    min-height: 35px;
+}
+.navbar-toggle{
+    padding: 0px;
+}

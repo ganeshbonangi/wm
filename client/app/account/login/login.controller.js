@@ -22,6 +22,7 @@ angular.module('workerManagementSystemApp')
           // Logged in, redirect to home
         })
         .catch( function(err) {
+          $location.path('/');
           $scope.errors.other = err.message;
         });
       }

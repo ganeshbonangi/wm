@@ -3,7 +3,15 @@
   background-color: #3B5998;
   border-color: #133783;
 }
-
+.form-horizontal{
+  position: absolute;
+  top: 55px;
+  text-align: right;
+}
+.login{
+  display: inline-block;
+  width: 150px;
+}
 .btn-twitter {
   color: #fff;
   background-color: #2daddc;
@@ -26,4 +34,13 @@
         text-align: left !important;
         margin-left: -15px;
     }
+}
+@media only screen and (max-width:610px){
+  .login{
+    width: 50%;
+    float: left;
+  }
+  .form-horizontal{
+    top:40px;
+  }
 }

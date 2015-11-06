@@ -9,7 +9,13 @@ angular.module('workerManagementSystemApp', [
   'btford.socket-io',
   'ui.bootstrap',
   'ngAnimate'
-]).controller('wmCtrl', function($scope, $http, Auth, User, $timeout, $modal, socket, locationSer){
+]).value('mapOptions',{
+                        zoom: 11,
+                        center: new google.maps.LatLng(17.6800900, 83.2016100),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        scrollwheel: false
+                      })
+  .controller('wmCtrl', function($scope, $http, Auth, User, $timeout, $modal, socket, locationSer, mapOptions){
       // Use the User $resource to fetch all users
     //$scope.users = User.query();
     $scope.delete = function(user) {
@@ -66,11 +72,7 @@ angular.module('workerManagementSystemApp', [
       locations = $scope.objectCollection.workers;
       if ($scope.isSuperAdmin) {
       admins = $scope.objectCollection.admins;
-      var adminmap = new google.maps.Map(document.getElementById('adminmap'), {
-        zoom: 11,
-        center: new google.maps.LatLng(19.164174, 72.948151),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
+      var adminmap = new google.maps.Map(document.getElementById('adminmap'), mapOptions);
 
       var marker;
       for ( i = 0; i < admins.length; i++) {  
@@ -93,11 +95,7 @@ angular.module('workerManagementSystemApp', [
         })(marker, i));
       }
       };
-      var workermap = new google.maps.Map(document.getElementById('workermap'), {
-        zoom: 11,
-        center: new google.maps.LatLng(19.164174, 72.948151),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
+      var workermap = new google.maps.Map(document.getElementById('workermap'),mapOptions);
 
       var marker;
 
@@ -125,11 +123,7 @@ angular.module('workerManagementSystemApp', [
     $scope.initOrder = function(orders) {
       var locations = [];
       locations = locationSer.mapMarkerHtmlForOrders(orders);
-      var workermap = new google.maps.Map(document.getElementById('ordermap'), {
-        zoom: 11,
-        center: new google.maps.LatLng(19.164174, 72.948151),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
+      var workermap = new google.maps.Map(document.getElementById('ordermap'), mapOptions);
 
       var marker;
 
@@ -186,7 +180,7 @@ angular.module('workerManagementSystemApp', [
           size: 'lr',/*'sm'*/
           resolve: {
             title: function(){
-              return "Adimin creation";
+              return user.role=="admin"?"Adimin creation":"User creation";
             },
             dataObject: function () {
               return user;
@@ -247,8 +241,7 @@ angular.module('workerManagementSystemApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-  })
-
+  })  
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -273,9 +266,7 @@ angular.module('workerManagementSystemApp', [
         }
       }
     };
-  })
-
-  .run(function ($rootScope, $location, Auth) {
+  }).run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next,prev) {
 
