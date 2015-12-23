@@ -235,8 +235,10 @@ angular.module('workerManagementSystemApp', [
 })
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-      .otherwise({
-        redirectTo: '/'
+      .when('/order', {
+        templateUrl: 'app/employer/employer.html'
+      }).otherwise({
+        redirectTo: '/main'
       });
 
     $locationProvider.html5Mode(true);

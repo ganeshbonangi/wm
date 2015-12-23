@@ -83,6 +83,11 @@ angular.module('workerManagementSystemApp')
   };
 
   $scope.getManPower = function(){
+    if(!$scope.order.mob){
+      $scope.mobileRequired = true;
+      return;
+    }
+    $scope.mobileRequired = false;
     var locat={
       'lat' : locationSer.lat,
       'lng' : locationSer.lng,

@@ -11,7 +11,7 @@
                   <!-- <i class="glyphicon glyphicon-menu-hamburger"></i> -->
                   <i class="glyphicon glyphicon-menu-hamburger"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Aapki Seva Me</a>
+                <a class="navbar-brand page-scroll" href="/main/#page-top">Aapki Seva Me</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,15 +22,15 @@
                     </li>
                     <li> 
                         <a href="#" style="color:#fed136">
-                            <i class="glyphicon glyphicon-phone-alt"></i>+91-9494970000
+                            <i class="glyphicon glyphicon-phone-alt"></i>+91-9963651698
                         </a>
                     </li>
                     <li ng-class="{'active':activeTab=='services'}">
                         <a class="page-scroll" href="#services"   ng-click="addActive($event,'services')">Services</a>
                     </li>
-                    <li ng-class="{'active':activeTab=='portfolio'}">
+                    <!-- <li ng-class="{'active':activeTab=='portfolio'}">
                         <a class="page-scroll" href="#portfolio"  ng-click="addActive($event,'portfolio')">Portfolio</a>
-                    </li>
+                    </li> -->
                     <li ng-class="{'active':activeTab=='about'}">
                         <a class="page-scroll" href="#about"  ng-click="addActive($event,'about')">About</a>
                     </li>
@@ -54,8 +54,21 @@
                 <ng-include src="'app/account/login/login.html'" ></ng-include>
             </div>
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
+                <div class="intro-lead-in">Welcome To Online Services!</div>
+                <form name="orderForm" ng-submit="submitOrderWithOutLogin(orderForm)" no-valiadation>
+                    <select name="repeatSelect" id="selectloc" class="btn btn-default dropdown-toggle" ng-model="orderForm.location">
+                        <option value="">---Please Select Location---</option>
+                        <option ng-repeat="option in locations" value="{{option.id}}">
+                            {{option.name}}
+                        </option>
+                    </select>
+                    <label ng-repeat="service in serviceTypes">
+                        <input type="radio" ng-model="orderForm.serviceType" ng-value="service.id">
+                        {{service.name}}
+                    </label>
+                    <button type="submit" class="btn btn-success">Place Order</button>
+                </form>
+                <!-- <div class="intro-heading">It's Nice To Meet You</div> -->
                 <a href="#services" class="btn btn-circle page-scroll" ng-click="addActive($event,'services')">
                     <i class="glyphicon glyphicon-download animated"></i>                    
                 </a>
@@ -69,11 +82,21 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">For both domestic and industrial sectors</h3>
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-4">
+                <div style="height:305px;">
+    <carousel interval="5000" no-wrap="false">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto; height:305px;">
+        <div class="carousel-caption">
+          <h4>{{slide.text}}</h4>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+                <!-- <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
@@ -96,13 +119,13 @@
                     </span>
                     <h4 class="service-heading">Web Security</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <!-- <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -197,7 +220,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- About Section -->
     <section id="about">
@@ -205,7 +228,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">In bit and pieces</h3>
                 </div>
             </div>
             <div class="row">
@@ -286,14 +309,14 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Together everyone achives more.</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-3 col-md-custom">
                     <div class="team-member">
-                        <img src="assets/images/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
+                        <img src="assets/images/mustacks.png" class="img-responsive img-circle" alt="">
+                        <h4>B. Ganesh</h4>
                         <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -305,10 +328,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-3 col-md-custom">
                     <div class="team-member">
-                        <img src="assets/images/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
+                        <img src="assets/images/mustacks.png" class="img-responsive img-circle" alt="">
+                        <h4>PVS. Prasad Rao</h4>
                         <p class="text-muted">Lead Marketer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -320,10 +343,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-3 col-md-custom">
                     <div class="team-member">
-                        <img src="assets/images/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
+                        <img src="assets/images/mustacks.png" class="img-responsive img-circle" alt="">
+                        <h4>Ulli Venkatesh</h4>
                         <p class="text-muted">Lead Admin</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -335,10 +358,25 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-3 col-md-custom">
                     <div class="team-member">
-                        <img src="assets/images/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
+                        <img src="assets/images/mustacks.png" class="img-responsive img-circle" alt="">
+                        <h4>J. SimhaChalam</h4>
+                        <p class="text-muted">Lead Admin</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-md-custom">
+                    <div class="team-member">
+                        <img src="assets/images/mustacks.png" class="img-responsive img-circle" alt="">
+                        <h4>B. Srinivas</h4>
                         <p class="text-muted">Lead Admin</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -351,16 +389,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
     <!-- Clients Aside -->
-    <aside class="clients">
+    <!-- <aside class="clients">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -385,7 +423,7 @@
                 </div>
             </div>
         </div>
-    </aside>
+    </aside> -->
     
     <!-- Contact Section -->
     <section id="contact">
@@ -393,37 +431,41 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Your satisfaction is our moto</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="mailer" id="contactForm" ng-submit="sendMail(mailer)" novalidate>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name." ng-model="mailer.name">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address." ng-model="mailer.mailId">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number." ng-model="mailer.mobile">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <textarea class="form-control" ng-model="mailer.message" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
                                 <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
+                                <button type="submit" class="btn btn-xl">Send Message 
+                                    <span class="glyphicon glyphicon-repeat fast-right-spinner" ng-show="spinDisplay"></span>
+                                    <span ng-show="successDisplay">&#10004;</span>
+                                    <span ng-show="errDisplay">&#10008;</span>
+                                </button>
                             </div>
                         </div>
                     </form>

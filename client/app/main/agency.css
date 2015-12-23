@@ -306,6 +306,9 @@ header .intro-text .intro-heading {
         padding-top: 250px;
         padding-bottom: 200px;
     }
+    .col-md-custom{
+        width: 20%;
+    }
 
     header .intro-text .intro-lead-in {
         margin-bottom: 25px;

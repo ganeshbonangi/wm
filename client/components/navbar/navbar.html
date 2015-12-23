@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">Aapki Seva Me</a>
+      <a class="navbar-brand"  href="/main/#page-top">Aapki Seva Me</a>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav ">
@@ -23,6 +23,11 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right  ">
+        <li> 
+            <a href="#" style="color:#fed136">
+                <i class="glyphicon glyphicon-phone-alt"></i>+91-9963651698
+            </a>
+        </li>
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/">Login&nbsp;<i class="glyphicon glyphicon-log-in"></i></a></li>
         <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>

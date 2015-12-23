@@ -120,8 +120,8 @@
     <div class="col-xs-12">
        <input type="number" name="empPhoneNumber" class="form-control" ng-model="order.mob" placeholder="Mobile Number"  ng-minlength=10 ng-maxlength=10  required/>
     </div>
+        <div style="color:red" ng-show="mobileRequired">Employee contact Number is required</div>
     <div class="col-xs-12" style="color:red" ng-show="employerForm.empPhoneNumber.$dirty && employerForm.empPhoneNumber.$invalid">
-        <div ng-show="employerForm.empPhoneNumber.$error.required">Employee conttact Number is required</div>
         <div ng-show="employerForm.empPhoneNumber.$error.maxlength">Employee conttact Number should be max 10</div>
         <div ng-show="employerForm.empPhoneNumber.$error.minlength">Employee conttact Number should be min 10</div>
         <div ng-show="employerForm.empPhoneNumber.$error.number">Invalid Number</div>
@@ -144,7 +144,7 @@
     <div pinlocation lat='order.location.lat' lng='order.location.lng' status='order.status' > </div>
   <hr />
     <div class="btncontainer">
-      <a class="btn btn-success" ng-click="getManPower()" ng-show="saveForm">Submit</a>
+      <a class="btn btn-success" ng-click="getManPower()"  ng-show="saveForm">Submit</a>
       <a class="btn btn-success" ng-click="updateOrder()" ng-hide="saveForm">Update</a>
       <a class="btn btn-danger" ng-click="cancel()">Cancle</a>
     </div>
